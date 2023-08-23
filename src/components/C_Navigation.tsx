@@ -11,7 +11,7 @@ const C_Navigation = () => {
 const expand = true
     return (
         <>
-            <Navbar expand='md' variant="dark" className="bg-dark mb-3">
+            <Navbar expand='md' variant="dark" className="bg-dark mb-3" fixed={"top"}>
 
                 <Container fluid>
 
@@ -33,6 +33,7 @@ const expand = true
 
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
+                                <Nav.Link as={NavLink} to={'/movie/now_playing'}>På Bio</Nav.Link>
                                 <Nav.Link as={NavLink} to={'/person'}>Person</Nav.Link>
                                 <Nav.Link as={NavLink} to={'/movies'}>Movies</Nav.Link>
                             </Nav>

@@ -1,2 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
-@import '_app';
+
+* {
+  //outline: 1px solid black;
+  background-color: #212529;
+  color: #f7f8fa;
+}
+#fetching__wrap {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}

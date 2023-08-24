@@ -8,13 +8,8 @@ interface Props {
 }
 
 const C_MovieList: React.FC<Props> = ({res}) => {
-    console.log(res)
-
     return (
         <>
-            <div className={'h2__wrap'}>
-                <h2>På Bio just nu</h2>
-            </div>
             <div className={'movie__wrap'}>
                 {res.map(m => (
                     <div className={'movie__card'} key={m.id}>

@@ -33,20 +33,23 @@ const expand = true
 
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
+                                <Nav.Link as={NavLink} to={'/movie/565770'}>Movie:id</Nav.Link>
                                 <Nav.Link as={NavLink} to={'/movie/now_playing'}>På Bio</Nav.Link>
-                                <Nav.Link as={NavLink} to={'/person'}>Person</Nav.Link>
-                                <Nav.Link as={NavLink} to={'/movies'}>Movies</Nav.Link>
+                                <Nav.Link as={NavLink} to={'/movie/popular'}>Populära Filmer</Nav.Link>
+                                <Nav.Link as={NavLink} to={'/movie/top_rated?page=1'}>Topplistade Filmer</Nav.Link>
+                                <Nav.Link as={NavLink} to={'/person/169337'}>Person:id</Nav.Link>
+                                <Nav.Link as={NavLink} to={'/person/popular?page=1'}>Populära Personer</Nav.Link>
                             </Nav>
 
-                            <Form className="d-flex">
-                                <Form.Control
-                                    type="search"
-                                    placeholder="Search"
-                                    className="me-2"
-                                    aria-label="Search"
-                                />
-                                <Button variant="outline-warning">Search</Button>
-                            </Form>
+                            {/*<Form className="d-flex">*/}
+                            {/*    <Form.Control*/}
+                            {/*        type="search"*/}
+                            {/*        placeholder="Search"*/}
+                            {/*        className="me-2"*/}
+                            {/*        aria-label="Search"*/}
+                            {/*    />*/}
+                            {/*    <Button variant="outline-warning">Search</Button>*/}
+                            {/*</Form>*/}
 
                         </Offcanvas.Body>
 

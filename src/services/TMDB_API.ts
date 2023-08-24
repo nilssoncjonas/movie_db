@@ -1,4 +1,5 @@
 import axios from "axios";
+import {createLogger} from "vite";
 
 const BASE_URL = 'https://api.themoviedb.org/3/'
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
@@ -17,4 +18,9 @@ export const get = async <T>(endpoint: string) => {
 	// Simulate a delay
 	!!FAKE_DELAY && await new Promise((r) => setTimeout(r, FAKE_DELAY))
 	return res.data
+}
+
+export const getDataListWithPages = <T>(resource: string, page = 1) => {
+	console.log(resource)
+	return get<T>(`${resource}?page=${page}&region=se`)
 }

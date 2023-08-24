@@ -1,8 +1,8 @@
-import {PersonRes} from "../types/index.types.ts";
+import {ActorRes, PersonRes} from "../types/index.types.ts";
 import {useSearchParams} from "react-router-dom";
 import {useState} from "react";
 import useGetDataListPages from "../hooks/useGetDataListPages.ts";
-import C_Personlist from "../components/C_Personlist.tsx";
+import C_PersonList from "../components/C_PersonList.tsx";
 
 const Popular_Person = () => {
     const [urlParams, setUrlParams] = useSearchParams()
@@ -13,14 +13,14 @@ const Popular_Person = () => {
         data,
         isSuccess,
         isError
-    } = useGetDataListPages<PersonRes>(['person/popular', page], 'person/popular', page)
+    } = useGetDataListPages<ActorRes>(['person/popular', page], 'person/popular', page)
     return (
         <>
             <div className={'h2__wrap'}>
                 <h2>Populära Personer</h2>
             </div>
             {isSuccess && data ? (
-                <C_Personlist res={data.results}/>
+                <C_PersonList res={data.results}/>
             ) : null}
             {isError ? (
                 //TODO fix better error message

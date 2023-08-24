@@ -1,5 +1,5 @@
 @import 'bootstrap/scss/bootstrap';
-@import './movie';
+@import 'data';
 * {
 	//outline: 1px solid yellow;
 	background-color: #212529;
@@ -15,6 +15,7 @@
 	position: absolute;
 	top: 1rem;
 	right: 5.75rem;
+	z-index: 1031;
 }
 
 nav {
@@ -35,3 +36,11 @@ nav {
 
 }
 
+@media only screen and (min-width: 768px) {
+	#fetching__wrap {
+		position: absolute;
+		top: unset;
+		bottom: 4rem;
+		right: 5rem;
+	}
+}

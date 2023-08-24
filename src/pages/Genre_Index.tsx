@@ -1,29 +1,27 @@
-import useGetData from "../hooks/useGetData.ts";
-import {GenreList} from "../types/index.types.ts";
-import React from "react";
+import useGetData from "../hooks/useGetData.ts"
+import {GenreList} from "../types/index.types.ts"
+import {Link} from "react-router-dom"
 
 const Genre_Index = () => {
-
-
     const {
         data,
-        isLoading,
         isSuccess,
-        isError,
-        refetch,
+        isError
     } = useGetData<GenreList>(['/genres'], 'genre/movie/list?&language=en')
     console.log(data)
     return (
         <>
             <div className={'h2__wrap'}>
-                <h2>Moviegenres</h2>
+                <h2>Movie Genres</h2>
             </div>
             {isSuccess && data ? (
                 <div className={'data__wrap'}>
                     {data.genres.map(g => (
-                        <div className={'data__card'} key={g.id}>
-                            <p className={'genre__img'}>{g.name}</p>
-                        </div>
+                        <Link to={`/genre/${g.id}`} key={g.id}>
+                            <div className={'data__card'}>
+                                <p className={'genre__img'}>{g.name}</p>
+                            </div>
+                        </Link>
                     ))}
                 </div>
             ) : null}

@@ -21,5 +21,10 @@ export const get = async <T>(endpoint: string) => {
 
 export const getDataListWithPages = <T>(resource: string, page = 1) => {
 	console.log(resource)
-	return get<T>(`${resource}?page=${page}&region=se`)
+	return get<T>(`${resource}?page=${page}`)
+}
+
+export const getDataByGenreWithPages = <T>(resource: string, page = 1) => {
+	console.log(resource)
+	return get<T>(`${resource}&?page=${page}`)
 }

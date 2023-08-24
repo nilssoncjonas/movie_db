@@ -2,7 +2,7 @@ import {MovieRes} from "../types/index.types.ts";
 import C_MovieList from "../components/C_MovieList.tsx";
 import {useSearchParams} from "react-router-dom";
 import {useState} from "react";
-import useGetMoviePages from "../hooks/useGetDataListPages.ts";
+import useGetDataListPages from "../hooks/useGetDataListPages.ts";
 import Button from "react-bootstrap/Button";
 
 
@@ -19,7 +19,7 @@ const Top_Rated = () => {
         isSuccess,
         isError,
         refetch,
-    } = useGetMoviePages<MovieRes>(['/movie/top_rated', page], 'movie/top_rated', page)
+    } = useGetDataListPages<MovieRes>(['movie/top_rated', page], 'movie/top_rated', page)
 
     const pageHandler = () => {
         setPage(prevValue => prevValue + 1)
@@ -31,7 +31,7 @@ const Top_Rated = () => {
     return (
         <>
             <div className={'h2__wrap'}>
-                <h2>Topplista Filmer</h2>
+                <h2>Top Rated Movies</h2>
                 <Button variant="outline-warning" onClick={() => pageHandler()}>page handler</Button>
             </div>
             {isSuccess && data ? (

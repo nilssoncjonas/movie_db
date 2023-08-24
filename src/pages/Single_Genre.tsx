@@ -21,13 +21,13 @@ const Single_Genre = () => {
         isSuccess,
         isError,
     } = useQuery(
-        ['/movie/genre', genreId, page],
+        ['movie/genre', genreId, page],
         () => getDataByGenreWithPages<MovieRes>(`discover/movie?include_adult=false&sort_by=popularity.desc&with_genres=${genreId}`, page)
     )
     return (
         <>
             <div className={'h2__wrap'}>
-                <h2>Movie By Genre</h2>
+                <h2>Movies By Genre</h2>
 
             </div>
             {isSuccess && data ? (

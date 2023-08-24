@@ -10,10 +10,11 @@ const Single_Person = () => {
         isSuccess,
         isError
     } = useGetData<SinglePerson>(['person/', `${personId}`], `person/${personId}?region=se`)
-    console.log(personId)
-    console.log(data)
+
+    console.log(personId, data)
+
     return (
-        <>
+        <><div className={'h2__wrap'}><h2>Single Person</h2></div>
         </>
     ) 
 }

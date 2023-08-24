@@ -9,6 +9,7 @@ const Popular_Person = () => {
     const pageParams = urlParams.get('page')
 
     const [page, setPage] = useState(Number(pageParams))
+
     const {
         data,
         isSuccess,
@@ -17,7 +18,7 @@ const Popular_Person = () => {
     return (
         <>
             <div className={'h2__wrap'}>
-                <h2>Populära Personer</h2>
+                <h2>Popular People</h2>
             </div>
             {isSuccess && data ? (
                 <C_PersonList res={data.results}/>

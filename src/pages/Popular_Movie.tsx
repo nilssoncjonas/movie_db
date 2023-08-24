@@ -7,12 +7,12 @@ const Popular_Movie = () => {
 		data,
 		isSuccess,
 		isError
-	} = useGetData<NowPlayingRes>(['movie/popular'], 'movie/popular?page=1?language=sv-SE&region=se')
-	console.log(data)
+	} = useGetData<NowPlayingRes>(['movie/popular'], 'movie/popular?page=1?&region=se')
+	//  TODO kunna välja populära filmer för dagen elelr veckan, tåla omladdning
     return (
         <>
 					<div className={'h2__wrap'}>
-						<h2>Populära Filmer Just Nu</h2>
+						<h2>Popular Movies Right Now</h2>
 					</div>
 					{isSuccess && data ? (
 						<C_MovieList res={data.results}/>

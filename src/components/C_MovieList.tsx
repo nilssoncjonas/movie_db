@@ -12,8 +12,8 @@ const C_MovieList: React.FC<Props> = ({res}) => {
         <>
             <div className={'data__wrap'}>
                 {res.map(m => (
-                    <Link to={`/movie/${m.id}`}>
-                        <div className={'data__card'} key={m.id}>
+                    <Link to={`/movie/${m.id}`} key={m.id}>
+                        <div className={'data__card'}>
                             <img src={`https://image.tmdb.org/t/p/w200${m.poster_path}`}/>
                             <p>{m.title} <span>{m.release_date}</span></p>
                         </div>

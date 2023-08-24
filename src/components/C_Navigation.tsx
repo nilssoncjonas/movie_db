@@ -37,9 +37,9 @@ const expand = true
                                 <Nav.Link as={NavLink} to={'/movie/popular'}>Popular Movies</Nav.Link>
                                 <Nav.Link as={NavLink} to={'/movie/top_rated?page=1'}>Top Rated Movies</Nav.Link>
 
-                                <Nav.Link as={NavLink} to={'/person/popular?page=1'}>Popular Persons</Nav.Link>
+                                <Nav.Link as={NavLink} to={'/person/popular?page=1'}>Popular People</Nav.Link>
 
-                                <Nav.Link as={NavLink} to={'/genre'}>Discover Movies By Genrer</Nav.Link>
+                                <Nav.Link as={NavLink} to={'/genre'}>Discover Movies By Genres</Nav.Link>
 
                             </Nav>
 

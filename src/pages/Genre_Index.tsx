@@ -7,7 +7,7 @@ const Genre_Index = () => {
         data,
         isSuccess,
         isError
-    } = useGetData<GenreList>(['/genres'], 'genre/movie/list?&language=en')
+    } = useGetData<GenreList>(['genres'], 'genre/movie/list?&language=en')
     console.log(data)
     return (
         <>

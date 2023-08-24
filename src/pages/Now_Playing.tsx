@@ -10,12 +10,12 @@ const Now_Playing = () => {
 		data,
 		isSuccess,
 		isError
-	} = useGetData<NowPlayingRes>(['movie/now_playing'], 'movie/now_playing?language=sv-SE&region=se')
+	} = useGetData<NowPlayingRes>(['movie/now_playing'], 'movie/now_playing?region=se')
 
 	return (
 		<>
 			<div className={'h2__wrap'}>
-				<h2>På Bio just nu</h2>
+				<h2>Movies Playing In Theaters Now</h2>
 			</div>
 			{isSuccess && data ? (
 				<C_MovieList res={data.results}/>

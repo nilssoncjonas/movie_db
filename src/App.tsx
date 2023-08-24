@@ -3,13 +3,19 @@ import {Route, Routes} from "react-router-dom";
 import './assets/scss/style.scss'
 // pages
 import Home from "./pages/Home.tsx";
+
 import Movie_Index from "./pages/Movie_Index.tsx";
 import Now_Playing from "./pages/Now_Playing.tsx";
 import Top_Rated from "./pages/Top_Rated.tsx";
 import Popular_Movie from "./pages/Popular_Movie.tsx";
 import Single_Movie from "./pages/Single_Movie.tsx";
+
 import Popular_Person from "./pages/Popular_Person.tsx";
 import Single_Person from "./pages/Single_Person.tsx";
+
+import Genre_Index from "./pages/Genre_Index.tsx";
+import Single_Genre from "./pages/Single_Genre.tsx";
+
 import NotFound from "./pages/NotFound.tsx";
 // components
 import C_GlobalLoading from "./components/C_GlobalLoading.tsx";
@@ -35,6 +41,13 @@ function App() {
 				<Route path={'/person'}>
 					<Route path={'popular'} element={<Popular_Person />} />
 					<Route path={':id'} element={<Single_Person />} />
+				</Route>
+
+				<Route path={'/genre'}>
+
+					<Route path={''} element={<Genre_Index />} />
+					<Route path={':id'} element={<Single_Genre />} />
+
 				</Route>
 
 				<Route path={'*'} element={<NotFound/>}/>

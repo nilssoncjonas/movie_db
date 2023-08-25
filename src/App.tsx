@@ -15,6 +15,8 @@ import Single_Person from "./pages/Single_Person.tsx";
 import Genre_Index from "./pages/Genre_Index.tsx";
 import Single_Genre from "./pages/Single_Genre.tsx";
 
+import Search_Result from "./pages/Search_Result.tsx";
+
 import NotFound from "./pages/NotFound.tsx";
 // components
 import C_GlobalLoading from "./components/C_GlobalLoading.tsx";
@@ -47,6 +49,7 @@ function App() {
 					<Route path={':id'} element={<Single_Genre />} />
 
 				</Route>
+					<Route path={'/search'} element={<Search_Result />} />
 
 				<Route path={'*'} element={<NotFound/>}/>
 

@@ -28,14 +28,21 @@ nav {
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
 	color: #e5a00d ;
 }
-
+.pagination__wrap{
+	max-width: 1130px;
+	margin: 2rem auto;
+}
 
 .h2__wrap {
 	max-width: 1130px;
 	display: block;
-	margin: 6rem auto 3rem auto;
+	margin: 6rem auto 2rem auto;
 	padding-left: 2rem;
+}
 
+.form__wrap{
+	width: 90%;
+	margin: 1rem auto 1rem auto ;
 }
 
 @media only screen and (min-width: 768px) {
@@ -44,5 +51,18 @@ nav {
 		top: unset;
 		bottom: 4rem;
 		right: 5rem;
+	}
+	.h2__wrap {
+		margin: 7rem auto 2rem auto;
+	}
+	.form__wrap{
+		width: 60%;
+		margin: 5rem auto ;
+	}
+}
+@media only screen and (min-width: 992px) {
+	.form__wrap{
+		width: 50%;
+		max-width: 850px;
 	}
 }

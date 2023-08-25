@@ -1,36 +1,51 @@
-import useGetData from "../hooks/useGetData.ts";
-import {NowPlayingRes} from "../types/index.types.ts";
-import C_MovieList from "../components/C_MovieList.tsx";
 import {useSearchParams} from "react-router-dom";
+// hooks
+import useGetData from "../hooks/useGetData.ts";
+// types
+import {MovieRes} from "../types/index.types.ts";
+// components
+import C_MovieList from "../components/C_MovieList.tsx";
 import C_Pagination from "../components/C_Pagination.tsx";
+// style
+import Button from "react-bootstrap/Button";
 
 const Popular_Movie = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const pageParams = searchParams.get('page') ?? '1'
+	const timeParams = searchParams.get('time_window') ?? 'day'
 
 	const {
 		data,
 		isSuccess,
-		isError
-	} = useGetData<NowPlayingRes>(['movie/popular', pageParams], `movie/popular?page=${pageParams}&region=se`)
+		isError,
+		isFetching
+	} = useGetData<MovieRes>(['movie/popular', timeParams, pageParams], `trending/movie/${timeParams}?language=en-US&include_adult=false&page=${pageParams}`)
 
 	const scrollTop = () => window.scrollTo({top: 0})
 	const prevPage = () => {
-		setSearchParams({page: String(Number(pageParams) - 1)})
+		setSearchParams({time_window: timeParams === 'day' ? 'day' : 'week', page: String(Number(pageParams) - 1)})
 		scrollTop()
 	}
 	const nextPage = () => {
-		setSearchParams({page: String(Number(pageParams) + 1)})
+		setSearchParams({time_window: timeParams === 'day' ? 'day' : 'week', page: String(Number(pageParams) + 1)})
 		scrollTop()
 	}
 
-	//  TODO kunna välja populära filmer för dagen eller veckan, tåla omladdning
 	return (
 		<>
 			<div className={'h2__wrap'}>
-				<h2>Popular Movies Right Now</h2>
+				<h2>Trending Movies {timeParams === 'day' ? 'Today!' : 'This Week!'}</h2>
 			</div>
 
+			<div className={'d-flex justify-content-around align-items-center pagination__wrap'}>
+				<Button variant={timeParams === 'day' ? 'warning' : 'outline-warning'}
+								disabled={isFetching || timeParams === 'day'}
+								onClick={() => setSearchParams({time_window: 'day', page: '1'})}>Trending Today</Button>
+
+				<Button variant={timeParams === 'week' ? 'warning' : 'outline-warning'}
+								disabled={isFetching || timeParams === 'week'}
+								onClick={() => setSearchParams({time_window: 'week', page: '1'})}>Trending This Week</Button>
+			</div>
 			{isSuccess && data ? (
 				<>
 					<div className={'text-center'}>
@@ -45,6 +60,7 @@ const Popular_Movie = () => {
 						/>
 					</div>
 					<C_MovieList res={data.results}/>
+
 					<C_Pagination
 						page={data.page}
 						total_pages={data.total_pages}

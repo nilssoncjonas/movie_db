@@ -18,11 +18,3 @@ export const get = async <T>(endpoint: string) => {
 	!!FAKE_DELAY && await new Promise((r) => setTimeout(r, FAKE_DELAY))
 	return res.data
 }
-
-export const getDataListWithPages = <T>(resource: string, page = 1) => {
-	return get<T>(`${resource}?page=${page}`)
-}
-
-export const getDataByGenreWithPages = <T>(resource: string, page = 1) => {
-	return get<T>(`${resource}&?page=${page}`)
-}

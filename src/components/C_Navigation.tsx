@@ -32,13 +32,10 @@ const expand = true
                         </Offcanvas.Header>
 
                         <Offcanvas.Body>
-                            <Nav className="justify-content-end flex-grow-1 pe-3">
+                            <Nav className="justify-content-end flex-grow-1 pe-3 text-center">
                                 <Nav.Link as={NavLink} to={'/movie/now_playing'}>Now Playing</Nav.Link>
-                                <Nav.Link as={NavLink} to={'/movie/popular'}>Popular Movies</Nav.Link>
+                                <Nav.Link as={NavLink} to={'/movie/popular?page=1'}>Popular Movies</Nav.Link>
                                 <Nav.Link as={NavLink} to={'/movie/top_rated?page=1'}>Top Rated Movies</Nav.Link>
-
-                                <Nav.Link as={NavLink} to={'/person/popular?page=1'}>Popular People</Nav.Link>
-
                                 <Nav.Link as={NavLink} to={'/genre'}>Discover Movies By Genres</Nav.Link>
 
                             </Nav>

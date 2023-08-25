@@ -39,7 +39,6 @@ function App() {
 				</Route>
 
 				<Route path={'/person'}>
-					<Route path={'popular'} element={<Popular_Person />} />
 					<Route path={':id'} element={<Single_Person />} />
 				</Route>
 

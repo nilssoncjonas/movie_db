@@ -1,7 +1,7 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'data';
 * {
-	//outline: 1px solid yellow;
+	//outline: 1px solid #e5a00d;
 	background-color: #212529;
 	color: #f7f8fa;
 	transition: all 0.3s ease-in-out;
@@ -10,7 +10,9 @@
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 }
-
+a {
+	text-decoration: none;
+}
 #fetching__wrap {
 	position: absolute;
 	top: 1rem;

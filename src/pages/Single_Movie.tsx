@@ -22,24 +22,29 @@ const Single_Movie = () => {
 		isSuccess,
 		isError
 	} = useGetData<MovieDetails>(['movie/', `${movieId}`], `movie/${movieId}?region=se`)
-
+	// TODO kunna klicka in på en film och få detaljerad information om filmen och få reda på vilka som var skådespelare i filmen.
 	return (
 		<>
-			<div className={'h2__wrap'}><h2>Single Movie</h2></div>
 			{isSuccess && data ? (
-				<div className={'single__movie__wrap'}>
-					<div className={'single__movie__header'} style={{ backgroundImage: `url('https://image.tmdb.org/t/p/w500${data.backdrop_path}')` }}>
+				<>
+					{/*<div className={'h2__wrap'}><h2>{data.title}</h2></div>*/}
+					<div className={'single__movie__wrap'}>
+						<div className={'single__movie__header'} style={{backgroundImage: `url('https://image.tmdb.org/t/p/original${data.backdrop_path}')`}}>
 
-					</div>
-						<div>
-							<img src={`https://image.tmdb.org/t/p/w300${data.poster_path}`}/>
-								<div className={'single__movie__info'}>
-									<p className={'single__movie__title'}>{data.title}</p>
-									<p className={'single__movie__overview'}>{data.overview}</p>
-								</div>
 						</div>
-
-				</div>
+						<div>
+							{/* TODO https://api.themoviedb.org/3/movie/157336?append_to_response=credits, filter/find crew->job->director etc.
+								TODO Add, runtime, release date budget
+*/}
+							<img className={'single__movie__cover'} src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}/>
+							<div className={'single__movie__info'}>
+								<h2 className={'single__movie__title'}>{data.title}</h2>
+								<p className={'single__movie__overview'}>{data.overview}</p>
+							</div>
+						</div>
+					{/*	TODO relaterade / liknande filmer för vald film*/}
+					</div>
+				</>
 			) : null}
 			{isError ? (
 				//TODO fix better error message

@@ -26,8 +26,23 @@ const Single_Genre = () => {
 			</div>
 
 			{isSuccess && data ? (
-				<div className={'text-center'}>
-					<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
+				<>
+					<div className={'text-center'}>
+						<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
+						<C_Pagination
+							page={data.page}
+							total_pages={data.total_pages}
+							hasPrevPage={data.page > 1}
+							hasNextPage={data.page + 1 < data.total_pages}
+							prevPage={() => {
+								setSearchParams({page: String(Number(pageParams) - 1)})
+							}}
+							nextPage={() => {
+								setSearchParams({page: String(Number(pageParams) + 1)})
+							}}
+						/>
+					</div>
+					<C_MovieList res={data.results}/>
 					<C_Pagination
 						page={data.page}
 						total_pages={data.total_pages}
@@ -35,41 +50,21 @@ const Single_Genre = () => {
 						hasNextPage={data.page + 1 < data.total_pages}
 						prevPage={() => {
 							setSearchParams({page: String(Number(pageParams) - 1)})
+							window.scrollTo({top: 0})
 						}}
 						nextPage={() => {
 							setSearchParams({page: String(Number(pageParams) + 1)})
+							window.scrollTo({top: 0})
 						}}
 					/>
-					<C_MovieList res={data.results}/>
-				</div>
-			) : null}
 
-			{isSuccess && data ? (
-				<C_MovieList res={data.results}/>
+				</>
 			) : null}
 			{isError ? (
 				// TODO fix better error message
 				' An error occurred...'
 			) : null}
 
-			{isSuccess && data ? (
-				<div className={'text-center'}>
-					<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
-					<C_Pagination
-						page={data.page}
-						total_pages={data.total_pages}
-						hasPrevPage={data.page > 1}
-						hasNextPage={data.page + 1 < data.total_pages}
-						prevPage={() => {
-							setSearchParams({page: String(Number(pageParams) - 1)})
-						}}
-						nextPage={() => {
-							setSearchParams({page: String(Number(pageParams) + 1)})
-						}}
-					/>
-					<C_MovieList res={data.results}/>
-				</div>
-			) : null}
 		</>
 	)
 }

@@ -10,7 +10,6 @@ import Top_Rated from "./pages/Top_Rated.tsx";
 import Popular_Movie from "./pages/Popular_Movie.tsx";
 import Single_Movie from "./pages/Single_Movie.tsx";
 
-import Popular_Person from "./pages/Popular_Person.tsx";
 import Single_Person from "./pages/Single_Person.tsx";
 
 import Genre_Index from "./pages/Genre_Index.tsx";

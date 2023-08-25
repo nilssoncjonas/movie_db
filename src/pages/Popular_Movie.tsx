@@ -22,8 +22,23 @@ const Popular_Movie = () => {
 			</div>
 
 			{isSuccess && data ? (
-				<div className={'text-center'}>
-					<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
+				<>
+					<div className={'text-center'}>
+						<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
+						<C_Pagination
+							page={data.page}
+							total_pages={data.total_pages}
+							hasPrevPage={data.page > 1}
+							hasNextPage={data.page + 1 < data.total_pages}
+							prevPage={() => {
+								setSearchParams({page: String(Number(pageParams) - 1)})
+							}}
+							nextPage={() => {
+								setSearchParams({page: String(Number(pageParams) + 1)})
+							}}
+						/>
+					</div>
+					<C_MovieList res={data.results}/>
 					<C_Pagination
 						page={data.page}
 						total_pages={data.total_pages}
@@ -31,41 +46,22 @@ const Popular_Movie = () => {
 						hasNextPage={data.page + 1 < data.total_pages}
 						prevPage={() => {
 							setSearchParams({page: String(Number(pageParams) - 1)})
+							window.scrollTo({top: 0})
 						}}
 						nextPage={() => {
 							setSearchParams({page: String(Number(pageParams) + 1)})
+							window.scrollTo({top: 0})
 						}}
 					/>
-
-					<C_MovieList res={data.results}/>
-				</div>
+				</>
 			) : null}
 			{isError ? (
 				// TODO fix better error message
 				' An error occurred...'
 			) : null}
 
-			{/*	TODO pagnation*/}
-
-			{isSuccess ? (
-				<C_Pagination
-					page={data.page}
-					total_pages={data.total_pages}
-					hasPrevPage={data.page > 1}
-					hasNextPage={data.page + 1 < data.total_pages}
-					prevPage={() => {
-						setSearchParams({page: String(Number(pageParams) - 1)})
-						window.scrollTo({top: 0})
-					}}
-					nextPage={() => {
-						setSearchParams({page: String(Number(pageParams) + 1)})
-						window.scrollTo({top: 0})
-					}}
-				/>
-			): null }
-
 		</>
 	)
 }
 
-			export default Popular_Movie
+export default Popular_Movie

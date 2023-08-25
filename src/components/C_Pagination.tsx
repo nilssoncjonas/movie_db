@@ -14,7 +14,7 @@ const C_Pagination: React.FC<Props> = ({prevPage, nextPage, hasNextPage, hasPrev
 
 	return (
 		<>
-			<div className={'m-3 px-4 d-flex justify-content-between align-items-center'}>
+			<div className={'d-flex justify-content-between align-items-center pagination__wrap'}>
 				<Button variant="outline-warning" disabled={!hasPrevPage} onClick={prevPage}>prev page</Button>
 				<p>Page {page} / {total_pages}</p>
 				<Button variant="outline-warning" disabled={!hasNextPage} onClick={nextPage}>next page</Button>

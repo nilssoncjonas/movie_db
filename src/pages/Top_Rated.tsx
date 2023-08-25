@@ -17,6 +17,16 @@ const Top_Rated = () => {
 		isSuccess,
 		isError,
 	} = useGetData<MovieRes>(['movie/top_rated', pageParams], `movie/top_rated?page=${pageParams}&region=se`)
+	const scrollTop = () => window.scrollTo({top: 0})
+	const prevPage = () => {
+		setSearchParams({page: String(Number(pageParams) - 1)})
+		scrollTop()
+	}
+	const nextPage = () => {
+		setSearchParams({page: String(Number(pageParams) + 1)})
+		scrollTop()
+	}
+
 	return (
 		<>
 			<div className={'h2__wrap'}>
@@ -32,12 +42,8 @@ const Top_Rated = () => {
 							total_pages={data.total_pages}
 							hasPrevPage={data.page > 1}
 							hasNextPage={data.page + 1 < data.total_pages}
-							prevPage={() => {
-								setSearchParams({page: String(Number(pageParams) - 1)})
-							}}
-							nextPage={() => {
-								setSearchParams({page: String(Number(pageParams) + 1)})
-							}}
+							prevPage={prevPage}
+							nextPage={nextPage}
 						/>
 					</div>
 					<C_MovieList res={data.results}/>
@@ -46,14 +52,8 @@ const Top_Rated = () => {
 						total_pages={data.total_pages}
 						hasPrevPage={data.page > 1}
 						hasNextPage={data.page + 1 < data.total_pages}
-						prevPage={() => {
-							setSearchParams({page: String(Number(pageParams) - 1)})
-							window.scrollTo({top: 0})
-						}}
-						nextPage={() => {
-							setSearchParams({page: String(Number(pageParams) + 1)})
-							window.scrollTo({top: 0})
-						}}
+						prevPage={prevPage}
+						nextPage={nextPage}
 					/>
 				</>
 			) : null}

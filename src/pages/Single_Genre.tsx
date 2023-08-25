@@ -17,7 +17,15 @@ const Single_Genre = () => {
 		isError,
 	} = useGetData<MovieRes>(
 		['movie/genre', genreId, pageParams], `discover/movie?include_adult=false&sort_by=popularity.desc&with_genres=${genreId}&page=${pageParams}`)
-
+	const scrollTop = () => window.scrollTo({top: 0})
+	const prevPage = () => {
+		setSearchParams({page: String(Number(pageParams) - 1)})
+		scrollTop()
+	}
+	const nextPage = () => {
+		setSearchParams({page: String(Number(pageParams) + 1)})
+		scrollTop()
+	}
 
 	return (
 		<>
@@ -34,12 +42,8 @@ const Single_Genre = () => {
 							total_pages={data.total_pages}
 							hasPrevPage={data.page > 1}
 							hasNextPage={data.page + 1 < data.total_pages}
-							prevPage={() => {
-								setSearchParams({page: String(Number(pageParams) - 1)})
-							}}
-							nextPage={() => {
-								setSearchParams({page: String(Number(pageParams) + 1)})
-							}}
+							prevPage={prevPage}
+							nextPage={nextPage}
 						/>
 					</div>
 					<C_MovieList res={data.results}/>
@@ -48,14 +52,8 @@ const Single_Genre = () => {
 						total_pages={data.total_pages}
 						hasPrevPage={data.page > 1}
 						hasNextPage={data.page + 1 < data.total_pages}
-						prevPage={() => {
-							setSearchParams({page: String(Number(pageParams) - 1)})
-							window.scrollTo({top: 0})
-						}}
-						nextPage={() => {
-							setSearchParams({page: String(Number(pageParams) + 1)})
-							window.scrollTo({top: 0})
-						}}
+						prevPage={prevPage}
+						nextPage={nextPage}
 					/>
 
 				</>

@@ -1,29 +1,71 @@
 import useGetData from "../hooks/useGetData.ts";
 import {NowPlayingRes} from "../types/index.types.ts";
 import C_MovieList from "../components/C_MovieList.tsx";
+import {useSearchParams} from "react-router-dom";
+import C_Pagination from "../components/C_Pagination.tsx";
 
 const Popular_Movie = () => {
+	const [searchParams, setSearchParams] = useSearchParams()
+	const pageParams = searchParams.get('page') ?? '1'
+
 	const {
 		data,
 		isSuccess,
 		isError
-	} = useGetData<NowPlayingRes>(['movie/popular'], 'movie/popular?page=1?&region=se')
-	//  TODO kunna välja populära filmer för dagen elelr veckan, tåla omladdning
-    return (
-        <>
-					<div className={'h2__wrap'}>
-						<h2>Popular Movies Right Now</h2>
-					</div>
-					{isSuccess && data ? (
-						<C_MovieList res={data.results}/>
-					) : null}
-					{isError ? (
-						//TODO fix better error message
-						' An error occurred...'
-					) : null}
-				{/*	TODO Pagnation*/}
-        </>
-    )
+	} = useGetData<NowPlayingRes>(['movie/popular', pageParams], `movie/popular?page=${pageParams}&region=se`)
+
+	//  TODO kunna välja populära filmer för dagen eller veckan, tåla omladdning
+	return (
+		<>
+			<div className={'h2__wrap'}>
+				<h2>Popular Movies Right Now</h2>
+			</div>
+
+			{isSuccess && data ? (
+				<div className={'text-center'}>
+					<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
+					<C_Pagination
+						page={data.page}
+						total_pages={data.total_pages}
+						hasPrevPage={data.page > 1}
+						hasNextPage={data.page + 1 < data.total_pages}
+						prevPage={() => {
+							setSearchParams({page: String(Number(pageParams) - 1)})
+						}}
+						nextPage={() => {
+							setSearchParams({page: String(Number(pageParams) + 1)})
+						}}
+					/>
+
+					<C_MovieList res={data.results}/>
+				</div>
+			) : null}
+			{isError ? (
+				// TODO fix better error message
+				' An error occurred...'
+			) : null}
+
+			{/*	TODO pagnation*/}
+
+			{isSuccess ? (
+				<C_Pagination
+					page={data.page}
+					total_pages={data.total_pages}
+					hasPrevPage={data.page > 1}
+					hasNextPage={data.page + 1 < data.total_pages}
+					prevPage={() => {
+						setSearchParams({page: String(Number(pageParams) - 1)})
+						window.scrollTo({top: 0})
+					}}
+					nextPage={() => {
+						setSearchParams({page: String(Number(pageParams) + 1)})
+						window.scrollTo({top: 0})
+					}}
+				/>
+			): null }
+
+		</>
+	)
 }
 
-export default Popular_Movie
+			export default Popular_Movie

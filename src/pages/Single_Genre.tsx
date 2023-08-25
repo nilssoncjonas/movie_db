@@ -1,46 +1,77 @@
 import {MovieRes} from "../types/index.types.ts";
 import {useParams, useSearchParams} from "react-router-dom";
-import {useState} from "react";
+import useGetData from "../hooks/useGetData.ts";
 import C_MovieList from "../components/C_MovieList.tsx";
-import {getDataByGenreWithPages} from "../services/TMDB_API.ts";
-import {useQuery} from "@tanstack/react-query";
+import C_Pagination from "../components/C_Pagination.tsx";
 
 const Single_Genre = () => {
-    const [urlParams, setUrlParams] = useSearchParams()
-    const pageParams = urlParams.get('page')
+	const [searchParams, setSearchParams] = useSearchParams()
+	const pageParams = searchParams.get('page') ?? '1'
 
-    const {id} = useParams()
-    const genreId = Number(id)
+	const {id} = useParams()
+	const genreId = Number(id)
+
+	const {
+		data,
+		isSuccess,
+		isError,
+	} = useGetData<MovieRes>(
+		['movie/genre', genreId, pageParams], `discover/movie?include_adult=false&sort_by=popularity.desc&with_genres=${genreId}&page=${pageParams}`)
 
 
-    const [page, setPage] = useState(Number(pageParams))
-    console.log(page)
+	return (
+		<>
+			<div className={'h2__wrap'}>
+				<h2>Movies By Genre</h2>
+			</div>
 
-    const {
-        data,
-        isSuccess,
-        isError,
-    } = useQuery(
-        ['movie/genre', genreId, page],
-        () => getDataByGenreWithPages<MovieRes>(`discover/movie?include_adult=false&sort_by=popularity.desc&with_genres=${genreId}`, page)
-    )
-    return (
-        <>
-            <div className={'h2__wrap'}>
-                <h2>Movies By Genre</h2>
+			{isSuccess && data ? (
+				<div className={'text-center'}>
+					<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
+					<C_Pagination
+						page={data.page}
+						total_pages={data.total_pages}
+						hasPrevPage={data.page > 1}
+						hasNextPage={data.page + 1 < data.total_pages}
+						prevPage={() => {
+							setSearchParams({page: String(Number(pageParams) - 1)})
+						}}
+						nextPage={() => {
+							setSearchParams({page: String(Number(pageParams) + 1)})
+						}}
+					/>
+					<C_MovieList res={data.results}/>
+				</div>
+			) : null}
 
-            </div>
-            {isSuccess && data ? (
-                <C_MovieList res={data.results}/>
-            ) : null}
-            {isError ? (
-                // TODO fix better error message
-                ' An error occurred...'
-            ) : null}
+			{isSuccess && data ? (
+				<C_MovieList res={data.results}/>
+			) : null}
+			{isError ? (
+				// TODO fix better error message
+				' An error occurred...'
+			) : null}
 
-            {/*	TODO pagnation*/}
-        </>
-    )
+			{isSuccess && data ? (
+				<div className={'text-center'}>
+					<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
+					<C_Pagination
+						page={data.page}
+						total_pages={data.total_pages}
+						hasPrevPage={data.page > 1}
+						hasNextPage={data.page + 1 < data.total_pages}
+						prevPage={() => {
+							setSearchParams({page: String(Number(pageParams) - 1)})
+						}}
+						nextPage={() => {
+							setSearchParams({page: String(Number(pageParams) + 1)})
+						}}
+					/>
+					<C_MovieList res={data.results}/>
+				</div>
+			) : null}
+		</>
+	)
 }
 
 export default Single_Genre

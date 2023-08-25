@@ -17,8 +17,8 @@ const Genre_Index = () => {
             {isSuccess && data ? (
                 <div className={'data__wrap'}>
                     {data.genres.map(g => (
-                        <Link to={`/genre/${g.id}`} key={g.id}>
-                            <div className={'data__card'}>
+                        <Link to={`/genre/${g.id}?page=1`} key={g.id}>
+                            <div>
                                 <p className={'genre__img'}>{g.name}</p>
                             </div>
                         </Link>

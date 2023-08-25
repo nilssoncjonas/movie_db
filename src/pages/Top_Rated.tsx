@@ -1,6 +1,6 @@
 import {useSearchParams} from "react-router-dom";
 // hooks
-import useGetDataListPages from "../hooks/useGetDataListPages.ts";
+import useGetData from "../hooks/useGetData.ts";
 // types
 import {MovieRes} from "../types/index.types.ts";
 // components
@@ -16,8 +16,7 @@ const Top_Rated = () => {
 		data,
 		isSuccess,
 		isError,
-	} = useGetDataListPages<MovieRes>(['movie/top_rated', pageParams], 'movie/top_rated', pageParams)
-
+	} = useGetData<MovieRes>(['movie/top_rated', pageParams], `movie/top_rated?page=${pageParams}&region=se`)
 	return (
 		<>
 			<div className={'h2__wrap'}>
@@ -39,6 +38,7 @@ const Top_Rated = () => {
 							setSearchParams({page: String(Number(pageParams) + 1)})
 						}}
 					/>
+
 					<C_MovieList res={data.results}/>
 				</div>
 			) : null}

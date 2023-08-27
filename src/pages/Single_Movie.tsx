@@ -1,6 +1,7 @@
 import useGetData from "../hooks/useGetData.ts";
 import {MovieDetails, MovieHistory} from "../types/index.types.ts";
 import {Link, useParams} from "react-router-dom";
+import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 
 const Single_Movie = () => {
     const {id} = useParams()
@@ -9,7 +10,8 @@ const Single_Movie = () => {
     const {
         data,
         isSuccess,
-        isError
+        isError,
+        refetch
     } = useGetData<MovieDetails>(['movie/', `${movieId}`], `movie/${movieId}&?append_to_response=credits,similar`)
 
 
@@ -89,8 +91,9 @@ const Single_Movie = () => {
                 </>
             ) : null}
             {isError ? (
-                //TODO fix better error message
-                ' An error occurred...'
+                <div className={'data__wrap mx-4'}>
+                    <C_ErrorHandle reFetch={refetch} variant={'danger'} msg={'Something went wrong, could not fetch the data. Please try again... '}/>
+                </div>
             ) : null}
         </>
     )

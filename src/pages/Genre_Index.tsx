@@ -1,12 +1,14 @@
 import useGetData from "../hooks/useGetData.ts"
 import {GenreList} from "../types/index.types.ts"
 import {Link} from "react-router-dom"
+import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 
 const Genre_Index = () => {
     const {
         data,
         isSuccess,
-        isError
+        isError,
+        refetch
     } = useGetData<GenreList>(['genres'], 'genre/movie/list?&language=en')
     console.log(data)
     return (
@@ -26,8 +28,9 @@ const Genre_Index = () => {
                 </div>
             ) : null}
             {isError ? (
-                //TODO fix better error message
-                ' An error occurred...'
+                <div className={'data__wrap mx-4'}>
+                    <C_ErrorHandle reFetch={refetch} variant={'danger'} msg={'Something went wrong, could not fetch the data. Please try again... '}/>
+                </div>
             ) : null}
         </>
     )

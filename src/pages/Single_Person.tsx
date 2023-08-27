@@ -1,6 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import useGetData from "../hooks/useGetData.ts";
 import {SinglePerson} from "../types/person.types.ts";
+import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 
 const Single_Person = () => {
     const {id} = useParams()
@@ -8,7 +9,8 @@ const Single_Person = () => {
     const {
         data,
         isSuccess,
-        isError
+        isError,
+        refetch
     } = useGetData<SinglePerson>(['person/', `${personId}`], `person/${personId}&?append_to_response=movie_credits`)
 
     return (
@@ -42,8 +44,9 @@ const Single_Person = () => {
                 </div>
             ) : null}
             {isError ? (
-                //TODO fix better error message
-                ' An error occurred...'
+                <div className={'data__wrap mx-4'}>
+                    <C_ErrorHandle reFetch={refetch} variant={'danger'} msg={'Something went wrong, could not fetch the data. Please try again... '}/>
+                </div>
             ) : null}
         </>
     )

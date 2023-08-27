@@ -78,7 +78,7 @@ export type Person = {
     // profile_path: string | null;
     known_for: PersonKnownForItem[];
 }
-export type Actor = {
+export type Cast = {
 	adult: boolean;
 	gender: number;
 	id: number;
@@ -91,4 +91,24 @@ export type Actor = {
 	character: string;
 	credit_id: string;
 	order: number;
+}
+
+export type Credits = {
+	cast: Cast[];
+    crew: Crew[];
+}
+
+export type Crew = {
+    adult: boolean;
+    gender: number;
+    id: number;
+    known_for_department: string;
+    name: string;
+    original_name: string;
+    popularity: number;
+    profile_path: string | null;
+    credit_id: string;
+    department: string;
+    job: string;
+
 }

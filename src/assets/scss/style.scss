@@ -3,7 +3,7 @@
 * {
 	//outline: 1px solid #e5a00d;
 	background-color: #212529;
-	color: #f7f8fa;
+	color: #f2f2f2;
 	transition: all 0.3s ease-in-out;
 	padding: 0;
 	margin: 0;
@@ -22,8 +22,9 @@ a {
 
 nav {
 	max-width: 1230px;
-	margin: 0 auto;
+	margin: 0.5rem;
 	border: 1px solid #e5a00d;
+	border-radius: 0.5rem;
 }
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
 	color: #e5a00d ;
@@ -64,5 +65,8 @@ nav {
 	.form__wrap{
 		width: 50%;
 		max-width: 850px;
+	}
+	nav {
+		margin: 0.5rem auto;
 	}
 }

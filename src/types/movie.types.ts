@@ -1,4 +1,4 @@
-import {Genre} from "./index.types.ts";
+import {Cast, Credits, Crew, Genre, MovieRes} from "./index.types.ts";
 
 
 // movie lists
@@ -56,6 +56,10 @@ export type MovieDetails = {
     video: boolean;
     vote_average: number;
     vote_count: number;
+		credits: Credits;
+		similar: MovieRes;
+    crew: Crew[];
+
 }
 export type ProductionCompany = {
     id: number;

@@ -39,3 +39,9 @@ export type Genre = {
 export type GenreList = {
     genres: Genre[];
 }
+
+export type MovieHistory = {
+    id: number,
+    title: string,
+    poster_path: string
+}

@@ -24,12 +24,18 @@ a {
 	right: 5.75rem;
 	z-index: 1031;
 }
-
+#offcanvasNavbar-expand-true {
+	background-color: #212529;
+}
+.btn-close {
+	background-color: #e5a00d;
+}
 nav {
 	max-width: 1230px;
 	margin: 0.5rem;
 	border: 1px solid #e5a00d;
 	border-radius: 0.5rem;
+	background-color: #212529;
 }
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
 	color: #e5a00d ;

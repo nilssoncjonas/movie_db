@@ -56,8 +56,8 @@ export type MovieDetails = {
     video: boolean;
     vote_average: number;
     vote_count: number;
-		credits: Credits;
-		similar: MovieRes;
+    credits: Credits;
+    similar: MovieRes;
     crew: Crew[];
 
 }

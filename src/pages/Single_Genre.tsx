@@ -46,7 +46,9 @@ const Single_Genre = () => {
 							nextPage={nextPage}
 						/>
 					</div>
+
 					<C_MovieList res={data.results}/>
+
 					<C_Pagination
 						page={data.page}
 						total_pages={data.total_pages}

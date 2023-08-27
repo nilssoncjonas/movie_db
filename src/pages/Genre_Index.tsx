@@ -15,11 +15,11 @@ const Genre_Index = () => {
                 <h2>Movie Genres</h2>
             </div>
             {isSuccess && data ? (
-                <div className={'data__wrap'}>
+                <div className={'genre__wrap'}>
                     {data.genres.map(g => (
-                        <Link to={`/genre/${g.id}?page=1`} key={g.id}>
-                            <div>
-                                <p className={'genre__img'}>{g.name}</p>
+                        <Link to={`/genre/${g.id}`} key={g.id}>
+                            <div className={'genre__img'}>
+                                <img src={`https://placehold.co/200x200/212529/e5a00d?text=${g.name}&font=montserrat`} alt={g.name}/>
                             </div>
                         </Link>
                     ))}

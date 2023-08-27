@@ -32,8 +32,8 @@ const expand = true
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3 text-center">
                                 <Nav.Link as={NavLink} to={'/movie/now_playing'}>Now Playing</Nav.Link>
-                                <Nav.Link as={NavLink} to={'/movie/popular?time_window=day&page=1'}>Trending Movies</Nav.Link>
-                                <Nav.Link as={NavLink} to={'/movie/top_rated?page=1'}>Top Rated Movies</Nav.Link>
+                                <Nav.Link as={NavLink} to={'/movie/popular'}>Trending Movies</Nav.Link>
+                                <Nav.Link as={NavLink} to={'/movie/top_rated'}>Top Rated Movies</Nav.Link>
                                 <Nav.Link as={NavLink} to={'/genre'}>Discover Movies By Genres</Nav.Link>
 
                             </Nav>

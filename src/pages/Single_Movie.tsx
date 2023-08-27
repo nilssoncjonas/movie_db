@@ -30,13 +30,13 @@ const Single_Movie = () => {
                                 <p>Status: {data.status}</p>
                                 <p>Release date: {data.release_date}</p>
                                 <p>
-                                    {data.credits.crew.filter(c => c.job === "Director").length > 1 ? 'Directors: ' : 'Director: '}:
+                                    {data.credits.crew.filter(c => c.job === "Director").length > 1 ? 'Directors: ' : 'Director: '}
                                     {data.credits.crew.filter(c => c.job === "Director").map(c =>
-                                        <span> {c.name}, </span>)}
+                                        <span> {c.name} </span>)}
                                 </p>
                                 <p>Runtime: {data.runtime} min</p>
-                                <p>Budget: ${new Intl.NumberFormat('sv-Se').format(data.budget)}</p>
-                                <p>Revenue: ${new Intl.NumberFormat('sv-SE').format(data.revenue)}</p>
+                                <p>Budget: $ {new Intl.NumberFormat('sv-Se').format(data.budget)}</p>
+                                <p>Revenue: $ {new Intl.NumberFormat('sv-SE').format(data.revenue)}</p>
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@ const Single_Movie = () => {
                             <div className={'single__movie__cast'}>
                                 {data.credits.cast.slice(0, 20).map(c => (
                                     <Link to={`/person/${c.id}`} key={c.id}>
-                                        <img src={`https://image.tmdb.org/t/p/w200${c.profile_path}`} alt={c.name}/>
+                                        <img src={ c.profile_path === null ? `https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat` : `https://image.tmdb.org/t/p/w200${c.profile_path}`} alt={c.name}/>
                                         <p>{c.name} as {c.character}</p>
                                     </Link>
                                 ))}
@@ -59,9 +59,10 @@ const Single_Movie = () => {
 
                             <h3> Similar (-ish!) movies as {data.title}</h3>
                             <div className={'single__movie_similar'}>
-                                {data.similar.results.slice().sort((a, b) => b.popularity - a.popularity).slice(0, 10).map(c => (
+                                {/* TODO duplicate slice?*/}
+                                {data.similar.results.sort((a, b) => b.popularity - a.popularity).map(c => (
                                     <Link to={`/movie/${c.id}`} key={c.id}>
-                                        <img src={`https://image.tmdb.org/t/p/w200${c.poster_path}`} alt={c.title}/>
+                                        <img src={ c.poster_path === null ? `https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat` : `https://image.tmdb.org/t/p/w200${c.poster_path}`} alt={c.title}/>
                                         <p>{c.title}</p>
                                     </Link>
                                 ))}

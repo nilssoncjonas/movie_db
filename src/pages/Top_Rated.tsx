@@ -41,7 +41,7 @@ const Top_Rated = () => {
 							page={data.page}
 							total_pages={data.total_pages}
 							hasPrevPage={data.page > 1}
-							hasNextPage={data.page + 1 < data.total_pages}
+							hasNextPage={data.page < data.total_pages}
 							prevPage={prevPage}
 							nextPage={nextPage}
 						/>
@@ -51,7 +51,7 @@ const Top_Rated = () => {
 						page={data.page}
 						total_pages={data.total_pages}
 						hasPrevPage={data.page > 1}
-						hasNextPage={data.page + 1 < data.total_pages}
+						hasNextPage={data.page < data.total_pages}
 						prevPage={prevPage}
 						nextPage={nextPage}
 					/>

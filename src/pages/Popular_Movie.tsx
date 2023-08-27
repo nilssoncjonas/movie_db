@@ -30,7 +30,6 @@ const Popular_Movie = () => {
 		setSearchParams({time_window: timeParams === 'day' ? 'day' : 'week', page: String(Number(pageParams) + 1)})
 		scrollTop()
 	}
-
 	return (
 		<>
 			<div className={'h2__wrap'}>

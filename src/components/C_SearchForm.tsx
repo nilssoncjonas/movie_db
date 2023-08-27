@@ -25,7 +25,7 @@ const C_SearchForm: React.FC<Props> = ({onSearch}) => {
 								value={searchInput}
 								required
 								type="search"
-								placeholder="Search"
+								placeholder="Movie search..."
 								className="me-2"
 								aria-label="Search"
 							/>

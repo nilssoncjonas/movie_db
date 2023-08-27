@@ -23,10 +23,10 @@
   img {
     width: 145px;
     border-radius: 1rem;
-    box-shadow: 0px 0px 1px 1px #dac7a2;
+    box-shadow: 0 0 1px 1px $img__border__shadow;
 
     &:hover {
-      box-shadow: 0px 0px 15px 5px #e5a00d;
+      box-shadow: 0 0 15px 5px $highlight__clr
 
     }
   }
@@ -56,10 +56,10 @@
   img {
     width: 100px;
     border-radius: 1rem;
-    box-shadow: 0 0 1px 1px #dac7a2;
+    box-shadow: 0 0 1px 1px $img__border__shadow;
 
     &:hover {
-      box-shadow: 0 0 3px 5px #e5a00d;
+      box-shadow: 0 0 3px 5px $highlight__clr;
       transform: scale(0.9);
     }
   }
@@ -94,7 +94,7 @@
     p {
       font-size: 0.9rem;
       margin-top: 1rem;
-      border-bottom: #e5a00d 1px solid;
+      border-bottom: $highlight__clr 1px solid;
       padding: 0 0.5rem;
 
       span {
@@ -109,7 +109,7 @@
   top: -50px;
   left: 15%;
   border-radius: 1rem;
-  box-shadow: 0 0 1px 2px #dac7a2;
+  box-shadow: 0 0 1px 2px $img__border__shadow;
   max-width: 145px;
 }
 
@@ -139,7 +139,7 @@
   img {
     border-radius: 1rem;
     width: 100px;
-    box-shadow: 0 0 1px 1px #dac7a2;
+    box-shadow: 0 0 1px 1px $img__border__shadow;
   }
   a {
     width: 100px;
@@ -184,7 +184,7 @@
 .person__info {
   padding: 1rem 2rem;
   border-radius: 1rem;
-  box-shadow: 0 0 1px 1px #dac7a2;
+  box-shadow: 0 0 1px 1px $img__border__shadow;
   position: relative;
   width: fit-content;
   left: 50%;
@@ -194,7 +194,7 @@
   text-align: center;
 
   &:hover {
-    box-shadow: 0 0 3px 3px #e5a00d;
+    box-shadow: 0 0 3px 3px $highlight__clr;
   }
 
   p {
@@ -328,11 +328,5 @@
   }
   .movie__history__title {
     text-align: center;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  * {
-    //outline: 1px solid #1637de;
   }
 }

@@ -1,4 +1,4 @@
-import {Cast, Credits, Crew, Genre, MovieRes} from "./index.types.ts";
+import {Credits, Crew, Genre, MovieRes} from "./index.types.ts";
 
 
 // movie lists

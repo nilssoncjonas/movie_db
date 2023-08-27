@@ -14,6 +14,7 @@ const Now_Playing = () => {
 
 	return (
 		<>
+
 			<div className={'h2__wrap'}>
 				<h2>Movies Playing In Theaters Now</h2>
 			</div>

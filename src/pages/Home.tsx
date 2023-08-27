@@ -1,8 +1,7 @@
 import {Link, useNavigate} from "react-router-dom";
-import {isServer, useQueryClient} from "@tanstack/react-query";
+import {useQueryClient} from "@tanstack/react-query";
 import C_SearchForm from "../components/C_SearchForm.tsx";
-import useLocalStorage from "../hooks/useLocalStorage.ts";
-import c_MovieList from "../components/C_MovieList.tsx";
+
 import {MovieHistory} from "../types/index.types.ts";
 
 const Home = () => {

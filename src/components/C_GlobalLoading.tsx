@@ -4,9 +4,7 @@ const C_GlobalLoading = () => {
     const isFetching = useIsFetching()
     return isFetching
         ? (
-            <div id="fetching__wrap">
-                <Spinner animation="grow" variant="warning" />
-            </div>
+            <Spinner id={'isFetching__spinner__wrap'} animation="border" variant="warning" />
         ) : null
 }
 export default C_GlobalLoading

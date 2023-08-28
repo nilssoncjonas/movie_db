@@ -1,8 +1,8 @@
 import {Link, useParams} from "react-router-dom";
 // hooks
-import useGetData from "../hooks/useGetData.ts";
+import useGetMovie from "../hooks/useGetMovie.ts";
 // Types
-import {MovieDetails, MovieHistory} from "../types/index.types.ts";
+import {MovieHistory} from "../types/index.types.ts";
 // components
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 
@@ -16,10 +16,10 @@ const Single_Movie = () => {
         isSuccess,
         isError,
         refetch
-    } = useGetData<MovieDetails>(['movie/', `${movieId}`], `movie/${movieId}&?append_to_response=credits,similar`)
+    } = useGetMovie(movieId)
 
 
-    if (isSuccess) {
+    if (isSuccess && data) {
         const movieHistory = window.localStorage.getItem('movieHistory') ?? '[]'
         const movieList = JSON.parse(movieHistory)
 
@@ -37,10 +37,7 @@ const Single_Movie = () => {
             {isLoading && (
                 <>
                     <div className={'single__movie__placeholder__wrap'}>
-
-
                         <span className="image placeholder placeholder-wave bg-warning"></span>
-
                         <div className={'single__movie__placeholder__data'}>
                             <span className="text placeholder placeholder-wave bg-warning"></span>
                             <span className="text placeholder placeholder-wave bg-warning"></span>
@@ -48,7 +45,6 @@ const Single_Movie = () => {
                             <span className="text placeholder placeholder-wave bg-warning"></span>
                             <span className="text placeholder placeholder-wave bg-warning"></span>
                             <span className="text placeholder placeholder-wave bg-warning"></span>
-
                         </div>
                     </div>
                     <div className={'single__movie__placeholder__info'}>

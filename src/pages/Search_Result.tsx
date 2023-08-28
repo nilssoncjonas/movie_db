@@ -1,9 +1,7 @@
 import {useSearchParams} from "react-router-dom";
 import {useQueryClient} from "@tanstack/react-query";
 // hooks
-import useGetData from "../hooks/useGetData.ts";
-// types
-import {MovieRes} from "../types/index.types.ts";
+import useGetSearch from "../hooks/useGetSearch.ts";
 // components
 import C_Pagination from "../components/C_Pagination.tsx";
 import C_MovieList from "../components/C_MovieList.tsx";
@@ -11,34 +9,37 @@ import C_SearchForm from "../components/C_SearchForm.tsx";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
+
 const Search_Result = () => {
 
     const queryClient = useQueryClient()
     const [searchParams, setSearchParams] = useSearchParams()
     const pageParams = searchParams.get('page') ?? '1'
     const queryParam = searchParams.get('query') ?? ''
-    const scrollTop = () => window.scrollTo({top: 0})
-    const prevPage = () => {
-        setSearchParams({query: queryParam, page: String(Number(pageParams) - 1)})
-        scrollTop()
-    }
-    const nextPage = () => {
-        setSearchParams({query: queryParam, page: String(Number(pageParams) + 1)})
-        scrollTop()
-    }
-    const onSearch = (searchQuery: string) => {
-        queryClient.invalidateQueries(['search'])
-        setSearchParams({query: searchQuery, page: '1'})
-    }
+
     const {
         data,
         isLoading,
         isSuccess,
         isError,
         refetch
-    } = useGetData<MovieRes>(['search', queryParam, pageParams], `search/movie?query=${queryParam}&include_adult=false&language=en-US&page=${pageParams}`)
-    // TODO om inget matchar sökfrågan
-    console.log(data)
+    } = useGetSearch(queryParam, pageParams)
+
+    const prevPage = () => {
+        setSearchParams({query: queryParam, page: String(Number(pageParams) - 1)})
+    }
+    const nextPage = () => {
+        setSearchParams({query: queryParam, page: String(Number(pageParams) + 1)})
+    }
+    const onSearch = (searchQuery: string) => {
+        queryClient.invalidateQueries(['search'])
+        setSearchParams({query: searchQuery, page: '1'})
+    }
+    //TODO !data => return
+    if (!data) {
+        return
+    }
+
     return (
         <div className={'search__page'}>
             <div className={'h2__wrap'}>

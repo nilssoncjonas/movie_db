@@ -1,8 +1,6 @@
 import {useSearchParams} from "react-router-dom";
 // hooks
-import useGetData from "../hooks/useGetData.ts";
-// types
-import {MovieRes} from "../types/index.types.ts";
+import useGetTrendingMovies from "../hooks/useGetTrendingMovies.ts";
 // components
 import C_MovieList from "../components/C_MovieList.tsx";
 import C_Pagination from "../components/C_Pagination.tsx";
@@ -10,6 +8,7 @@ import C_Pagination from "../components/C_Pagination.tsx";
 import Button from "react-bootstrap/Button";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
+
 
 const Popular_Movie = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -22,7 +21,8 @@ const Popular_Movie = () => {
         isSuccess,
         isError,
         isFetching, refetch
-    } = useGetData<MovieRes>(['movie/popular', timeParams, pageParams], `trending/movie/${timeParams}?language=en-US&include_adult=false&page=${pageParams}`)
+
+    } = useGetTrendingMovies(timeParams, pageParams)
 
 
     const prevPage = () => {

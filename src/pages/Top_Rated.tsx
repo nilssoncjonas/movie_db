@@ -1,8 +1,6 @@
 import {useSearchParams} from "react-router-dom";
 // hooks
-import useGetData from "../hooks/useGetData.ts";
-// types
-import {MovieRes} from "../types/index.types.ts";
+import useGetTopRated from "../hooks/useGetTopRated.ts";
 // components
 import C_MovieList from "../components/C_MovieList.tsx";
 import C_Pagination from "../components/C_Pagination.tsx";
@@ -20,7 +18,8 @@ const Top_Rated = () => {
         isSuccess,
         isError,
         refetch
-    } = useGetData<MovieRes>(['movie/top_rated', pageParams], `movie/top_rated?page=${pageParams}&region=se`)
+    } = useGetTopRated(pageParams)
+
     const prevPage = () => {
         setSearchParams({page: String(Number(pageParams) - 1)})
     }

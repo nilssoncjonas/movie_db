@@ -12,7 +12,6 @@ const instance = axios.create({
 	}
 })
 export const get = async <T>(endpoint: string) => {
-	console.log('api:',endpoint)
 	const res = await instance.get<T>(BASE_URL + endpoint + API_KEY)
 	// Simulate a delay
 	!!FAKE_DELAY && await new Promise((r) => setTimeout(r, FAKE_DELAY))

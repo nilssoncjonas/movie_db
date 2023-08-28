@@ -1,12 +1,13 @@
-import {MovieRes} from "../types/index.types.ts";
+
 import {useParams, useSearchParams} from "react-router-dom";
 // hooks
-import useGetData from "../hooks/useGetData.ts";
+import useGetMoviesInGenre from "../hooks/useGetMoviesInGenre.ts";
 // components
 import C_MovieList from "../components/C_MovieList.tsx";
 import C_Pagination from "../components/C_Pagination.tsx";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
+
 
 const Single_Genre = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -21,8 +22,7 @@ const Single_Genre = () => {
         isSuccess,
         isError,
         refetch
-    } = useGetData<MovieRes>(
-        ['movie/genre', genreId, pageParams], `discover/movie?include_adult=false&sort_by=popularity.desc&with_genres=${genreId}&page=${pageParams}`)
+    } = useGetMoviesInGenre(genreId, pageParams)
     const prevPage = () => {
         setSearchParams({page: String(Number(pageParams) - 1)})
     }

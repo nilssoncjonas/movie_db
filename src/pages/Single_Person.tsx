@@ -1,10 +1,9 @@
 import {Link, useParams} from "react-router-dom";
 // hooks
-import useGetData from "../hooks/useGetData.ts";
-// types
-import {SinglePerson} from "../types/person.types.ts";
+import useGetPerson from "../hooks/useGetPerson.ts";
 // components
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
+
 
 const Single_Person = () => {
     const {id} = useParams()
@@ -15,7 +14,7 @@ const Single_Person = () => {
         isSuccess,
         isError,
         refetch
-    } = useGetData<SinglePerson>(['person/', `${personId}`], `person/${personId}&?append_to_response=movie_credits`)
+    } = useGetPerson(personId)
 
     return (
         <>

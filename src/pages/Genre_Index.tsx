@@ -1,8 +1,6 @@
 import {Link} from "react-router-dom"
 // hooks
-import useGetData from "../hooks/useGetData.ts"
-// types
-import {GenreList} from "../types/index.types.ts"
+import useGetGenre from "../hooks/useGetGenre.ts";
 // components
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
@@ -14,8 +12,7 @@ const Genre_Index = () => {
         isSuccess,
         isError,
         refetch
-    } = useGetData<GenreList>(['genres'], 'genre/movie/list?&language=en')
-    console.log(data)
+    } = useGetGenre()
     return (
         <>
             <div className={'h2__wrap'}>
@@ -36,7 +33,7 @@ const Genre_Index = () => {
             ) : null}
             {isError ? (
                 <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                               msg={'Something went wrong, could not fetch the data. Please try again... '}/>
+                               msg={'Something went wrong when fetching movie genres. Please try again... '}/>
             ) : null}
         </>
     )

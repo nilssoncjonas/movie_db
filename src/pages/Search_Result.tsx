@@ -35,16 +35,19 @@ const Search_Result = () => {
         refetch
     } = useGetData<MovieRes>(['search', queryParam, pageParams], `search/movie?query=${queryParam}&include_adult=false&language=en-US&page=${pageParams}`)
     // TODO om inget matchar sökfrågan
+    console.log(data)
     return (
-        <>
+        <div className={'search__page'}>
             <div className={'h2__wrap'}>
-                <h2>Search Result for {queryParam}</h2>
+                <h2>Search Result for "{queryParam}"</h2>
             </div>
 
             <C_SearchForm onSearch={onSearch}/>
-            {isLoading && <C_Placeholder_loading />}
 
-            {isSuccess && data ? (
+            {isLoading && <C_Placeholder_loading/>}
+
+
+            {isSuccess && data.results.length > 1 ? (
                 <>
                     <div className={'text-center'}>
                         <p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
@@ -69,13 +72,22 @@ const Search_Result = () => {
                         nextPage={nextPage}
                     />
                 </>
-            ) : null}
+            ) : (
+                <div className={'search__noresult'}>
+                    Couldn't find any movies that matches: <span> "{queryParam}"</span>
+                    <p>
+                        Try search again for a movie title!
+                    </p>
+                </div>
+
+            )}
             {isError ? (
                 <div className={'data__wrap mx-4'}>
-                    <C_ErrorHandle reFetch={refetch} variant={'danger'} msg={'Something went wrong, could not fetch the data. Please try again... '}/>
+                    <C_ErrorHandle reFetch={refetch} variant={'danger'}
+                                   msg={'Something went wrong when searching, could not fetch the data. Please try again... '}/>
                 </div>
             ) : null}
-        </>
+        </div>
     )
 }
 

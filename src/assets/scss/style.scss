@@ -91,6 +91,7 @@
     height: 300px;
 
   }
+
   .name {
     width: 300px;
     height: 2rem;
@@ -120,7 +121,25 @@
 
 body {
   background-color: $body__bg;
+}
 
+.search__page {
+  min-height: 50dvh;
+}
+
+.search__noresult {
+  width: 90%;
+  max-width: 930px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 2rem;
+
+  span {
+    display: block;
+    font-style: italic;
+    color: #e5a00d;
+
+  }
 }
 
 a {

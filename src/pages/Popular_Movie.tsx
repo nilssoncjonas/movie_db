@@ -24,14 +24,12 @@ const Popular_Movie = () => {
         isFetching, refetch
     } = useGetData<MovieRes>(['movie/popular', timeParams, pageParams], `trending/movie/${timeParams}?language=en-US&include_adult=false&page=${pageParams}`)
 
-    const scrollTop = () => window.scrollTo({top: 0})
+
     const prevPage = () => {
         setSearchParams({time_window: timeParams === 'day' ? 'day' : 'week', page: String(Number(pageParams) - 1)})
-        scrollTop()
     }
     const nextPage = () => {
         setSearchParams({time_window: timeParams === 'day' ? 'day' : 'week', page: String(Number(pageParams) + 1)})
-        scrollTop()
     }
     return (
         <>
@@ -42,15 +40,16 @@ const Popular_Movie = () => {
             {isSuccess && data ? (
                 <>
 
-            <div className={'d-flex justify-content-around align-items-center pagination__wrap'}>
-                <Button variant={timeParams === 'day' ? 'warning' : 'outline-warning'}
-                        disabled={isFetching || timeParams === 'day'}
-                        onClick={() => setSearchParams({time_window: 'day', page: '1'})}>Trending Today</Button>
+                    <div className={'d-flex justify-content-around align-items-center pagination__wrap'}>
+                        <Button variant={timeParams === 'day' ? 'warning' : 'outline-warning'}
+                                disabled={isFetching || timeParams === 'day'}
+                                onClick={() => setSearchParams({time_window: 'day', page: '1'})}>Trending Today</Button>
 
-                <Button variant={timeParams === 'week' ? 'warning' : 'outline-warning'}
-                        disabled={isFetching || timeParams === 'week'}
-                        onClick={() => setSearchParams({time_window: 'week', page: '1'})}>Trending This Week</Button>
-            </div>
+                        <Button variant={timeParams === 'week' ? 'warning' : 'outline-warning'}
+                                disabled={isFetching || timeParams === 'week'}
+                                onClick={() => setSearchParams({time_window: 'week', page: '1'})}>Trending This
+                            Week</Button>
+                    </div>
                     <div className={'text-center'}>
                         <p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
                         <C_Pagination
@@ -75,10 +74,8 @@ const Popular_Movie = () => {
                 </>
             ) : null}
             {isError ? (
-                <div className={'data__wrap mx-4'}>
-                    <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                                   msg={'Something went wrong, could not fetch the data. Please try again... '}/>
-                </div>
+                <C_ErrorHandle reFetch={refetch} variant={'danger'}
+                               msg={'Something went wrong when fetching the trending movies. Please try again... '}/>
             ) : null}
 
         </>

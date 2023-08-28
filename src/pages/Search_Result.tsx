@@ -1,10 +1,13 @@
 import {useSearchParams} from "react-router-dom";
+import {useQueryClient} from "@tanstack/react-query";
+// hooks
 import useGetData from "../hooks/useGetData.ts";
+// types
 import {MovieRes} from "../types/index.types.ts";
+// components
 import C_Pagination from "../components/C_Pagination.tsx";
 import C_MovieList from "../components/C_MovieList.tsx";
 import C_SearchForm from "../components/C_SearchForm.tsx";
-import {useQueryClient} from "@tanstack/react-query";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
@@ -82,10 +85,8 @@ const Search_Result = () => {
 
             )}
             {isError ? (
-                <div className={'data__wrap mx-4'}>
-                    <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                                   msg={'Something went wrong when searching, could not fetch the data. Please try again... '}/>
-                </div>
+                <C_ErrorHandle reFetch={refetch} variant={'danger'}
+                               msg={'Something went wrong when searching. Please try again... '}/>
             ) : null}
         </div>
     )

@@ -25,11 +25,6 @@ const C_Placeholder_loading = () => {
             <span className=" placeholder placeholder-wave bg-warning"></span>
             <span className=" placeholder placeholder-wave bg-warning"></span>
 
-            <span className=" placeholder placeholder-wave bg-warning"></span>
-            <span className=" placeholder placeholder-wave bg-warning"></span>
-            <span className=" placeholder placeholder-wave bg-warning"></span>
-            <span className=" placeholder placeholder-wave bg-warning"></span>
-            <span className=" placeholder placeholder-wave bg-warning"></span>
         </div>
     )
 }

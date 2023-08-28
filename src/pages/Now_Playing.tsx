@@ -27,9 +27,8 @@ const Now_Playing = () => {
                 <C_MovieList res={data.results}/>
             ) : null}
             {isError ? (
-                <div className={'data__wrap mx-4'}>
-                    <C_ErrorHandle reFetch={refetch} variant={'danger'} msg={'Something went wrong, could not fetch the data. Please try again... '}/>
-                </div>
+                <C_ErrorHandle reFetch={refetch} variant={'danger'}
+                               msg={'Something went wrong when fetching the movies that are playing now. Please try again... '}/>
             ) : null}
         </>
     )

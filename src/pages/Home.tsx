@@ -1,5 +1,6 @@
 import {Link, useNavigate} from "react-router-dom";
 import {useQueryClient} from "@tanstack/react-query";
+// components
 import C_SearchForm from "../components/C_SearchForm.tsx";
 
 import {MovieHistory} from "../types/index.types.ts";
@@ -25,7 +26,7 @@ const Home = () => {
             </div>
             <C_SearchForm onSearch={onSearch}/>
 
-            {movieList.length > 1 && (
+            {movieList.length >= 1 && (
                 <>
                     <h2 className={'movie__history__title'}>Movies from your viewing history</h2>
                     <div className={'data__wrap'}>

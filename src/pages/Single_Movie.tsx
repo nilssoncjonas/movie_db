@@ -1,6 +1,9 @@
-import useGetData from "../hooks/useGetData.ts";
-import {MovieDetails, MovieHistory} from "../types/index.types.ts";
 import {Link, useParams} from "react-router-dom";
+// hooks
+import useGetData from "../hooks/useGetData.ts";
+// Types
+import {MovieDetails, MovieHistory} from "../types/index.types.ts";
+// components
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 
 const Single_Movie = () => {
@@ -36,7 +39,7 @@ const Single_Movie = () => {
                     <div className={'single__movie__placeholder__wrap'}>
 
 
-                            <span className="image placeholder placeholder-wave bg-warning"></span>
+                        <span className="image placeholder placeholder-wave bg-warning"></span>
 
                         <div className={'single__movie__placeholder__data'}>
                             <span className="text placeholder placeholder-wave bg-warning"></span>
@@ -48,15 +51,15 @@ const Single_Movie = () => {
 
                         </div>
                     </div>
-                        <div className={'single__movie__placeholder__info'}>
-                            <span className="heading placeholder placeholder-wave bg-warning"></span>
-                            <span className="text placeholder placeholder-wave bg-warning"></span>
-                            <span className="text placeholder placeholder-wave bg-warning"></span>
-                            <span className="text placeholder placeholder-wave bg-warning"></span>
-                            <span className="text placeholder placeholder-wave bg-warning"></span>
-                            <span className="text placeholder placeholder-wave bg-warning"></span>
-                            <span className="text placeholder placeholder-wave bg-warning"></span>
-                        </div>
+                    <div className={'single__movie__placeholder__info'}>
+                        <span className="heading placeholder placeholder-wave bg-warning"></span>
+                        <span className="text placeholder placeholder-wave bg-warning"></span>
+                        <span className="text placeholder placeholder-wave bg-warning"></span>
+                        <span className="text placeholder placeholder-wave bg-warning"></span>
+                        <span className="text placeholder placeholder-wave bg-warning"></span>
+                        <span className="text placeholder placeholder-wave bg-warning"></span>
+                        <span className="text placeholder placeholder-wave bg-warning"></span>
+                    </div>
                 </>
             )}
 
@@ -122,10 +125,8 @@ const Single_Movie = () => {
                 </>
             ) : null}
             {isError ? (
-                <div className={'data__wrap mx-4'}>
-                    <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                                   msg={'Something went wrong, could not fetch the data. Please try again... '}/>
-                </div>
+                <C_ErrorHandle reFetch={refetch} variant={'danger'}
+                               msg={'Something went wrong when fetching info about this movie. Please try again... '}/>
             ) : null}
         </>
     )

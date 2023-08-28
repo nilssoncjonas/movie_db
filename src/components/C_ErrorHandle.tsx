@@ -1,5 +1,6 @@
 import React from 'react'
-import {Alert} from "react-bootstrap";
+// style
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 
 interface Props {
@@ -11,13 +12,13 @@ interface Props {
 const C_ErrorHandle: React.FC<Props> = ({variant, msg, reFetch}) => {
 
     return (
-        <>
+        <div className={'error__wrap'}>
             <Alert key={variant} variant={variant}>
                 Whops! {msg}
                 <Button className={'d-block mt-2'} variant={`outline-${variant}`} size={'sm'} onClick={() => reFetch()}>Try
                     again...</Button>
             </Alert>
-        </>
+        </div>
     )
 }
 

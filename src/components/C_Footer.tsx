@@ -8,7 +8,7 @@ const C_Footer = () => {
             <footer>
                 <div className={'footer__menu'}>
 
-                    <h3>The Movie DB 🎬</h3>
+                    <h3>The Movie DB</h3>
                     <ul>
                         <li><Link to={'/movie/now_playing'}>Now Playing</Link></li>
                         <li><Link to={'/movie/popular'}>Trending Movies</Link></li>

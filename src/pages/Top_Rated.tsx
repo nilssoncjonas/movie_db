@@ -11,65 +11,62 @@ import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
 
 const Top_Rated = () => {
-	const [searchParams, setSearchParams] = useSearchParams()
-	const pageParams = searchParams.get('page') ?? '1'
+    const [searchParams, setSearchParams] = useSearchParams()
+    const pageParams = searchParams.get('page') ?? '1'
 
-	const {
-		data,
-		isLoading,
-		isSuccess,
-		isError,
-		refetch
-	} = useGetData<MovieRes>(['movie/top_rated', pageParams], `movie/top_rated?page=${pageParams}&region=se`)
-	const scrollTop = () => window.scrollTo({top: 0})
-	const prevPage = () => {
-		setSearchParams({page: String(Number(pageParams) - 1)})
-		scrollTop()
-	}
-	const nextPage = () => {
-		setSearchParams({page: String(Number(pageParams) + 1)})
-		scrollTop()
-	}
+    const {
+        data,
+        isLoading,
+        isSuccess,
+        isError,
+        refetch
+    } = useGetData<MovieRes>(['movie/top_rated', pageParams], `movie/top_rated?page=${pageParams}&region=se`)
+    const prevPage = () => {
+        setSearchParams({page: String(Number(pageParams) - 1)})
+    }
+    const nextPage = () => {
+        setSearchParams({page: String(Number(pageParams) + 1)})
+    }
 
-	return (
-		<>
-			<div className={'h2__wrap'}>
-				<h2>Top Rated Movies</h2>
-			</div>
-			{isLoading && <C_Placeholder_loading/>}
+    return (
+        <>
+            <div className={'h2__wrap'}>
+                <h2>Top Rated Movies</h2>
+            </div>
+            {isLoading && <C_Placeholder_loading/>}
 
-			{isSuccess && data ? (
-				<>
-					<div className={'text-center'}>
-						<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
-						<C_Pagination
-							page={data.page}
-							total_pages={data.total_pages}
-							hasPrevPage={data.page > 1}
-							hasNextPage={data.page < data.total_pages}
-							prevPage={prevPage}
-							nextPage={nextPage}
-						/>
-					</div>
-					<C_MovieList res={data.results}/>
-					<C_Pagination
-						page={data.page}
-						total_pages={data.total_pages}
-						hasPrevPage={data.page > 1}
-						hasNextPage={data.page < data.total_pages}
-						prevPage={prevPage}
-						nextPage={nextPage}
-					/>
-				</>
-			) : null}
-			{isError ? (
-				<div className={'data__wrap mx-4'}>
-					<C_ErrorHandle reFetch={refetch} variant={'danger'} msg={'Something went wrong, could not fetch the data. Please try again... '}/>
-				</div>
-			) : null}
+            {isSuccess && data ? (
+                <>
+                    <div className={'text-center'}>
+                        <p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
+                        <C_Pagination
+                            page={data.page}
+                            total_pages={data.total_pages}
+                            hasPrevPage={data.page > 1}
+                            hasNextPage={data.page < data.total_pages}
+                            prevPage={prevPage}
+                            nextPage={nextPage}
+                        />
+                    </div>
+                    <C_MovieList res={data.results}/>
+                    <C_Pagination
+                        page={data.page}
+                        total_pages={data.total_pages}
+                        hasPrevPage={data.page > 1}
+                        hasNextPage={data.page < data.total_pages}
+                        prevPage={prevPage}
+                        nextPage={nextPage}
+                    />
+                </>
+            ) : null}
 
-		</>
-	)
+            {isError ? (
+                <C_ErrorHandle reFetch={refetch} variant={'danger'}
+                               msg={'Something went wrong when fetching the Top Rated movies. Please try again... '}/>
+            ) : null}
+
+        </>
+    )
 }
 
 export default Top_Rated

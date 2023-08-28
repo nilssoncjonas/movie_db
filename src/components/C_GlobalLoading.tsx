@@ -1,4 +1,5 @@
 import {useIsFetching} from "@tanstack/react-query"
+// style
 import Spinner from "react-bootstrap/Spinner"
 
 const C_GlobalLoading = () => {

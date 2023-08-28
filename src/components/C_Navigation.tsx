@@ -1,10 +1,13 @@
 
 import { Link, NavLink } from 'react-router-dom'
+// components
+import C_GlobalLoading from "./C_GlobalLoading.tsx";
 // style
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+
 const C_Navigation = () => {
 const expand = true
     return (
@@ -13,7 +16,8 @@ const expand = true
 
                 <Container fluid>
 
-                    <Navbar.Brand as={Link} to={'/'}><h1>The Movie DB 🎬</h1></Navbar.Brand>
+                    <Navbar.Brand as={Link} to={'/'}><h1>The Movie DB </h1><C_GlobalLoading/></Navbar.Brand>
+
 
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 

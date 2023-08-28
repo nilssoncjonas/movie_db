@@ -77,7 +77,7 @@
 }
 
 .person__placeholder__loading__wrap {
-  max-width: 930;
+  max-width: 930px;
   margin: 100px auto 3rem auto;
   width: 95%;
   display: flex;
@@ -122,6 +122,11 @@
 body {
   background-color: $body__bg;
 }
+.error__wrap {
+  margin: 0 auto;
+  width: 75%;
+  max-width: 630px;
+}
 
 .search__page {
   min-height: 50dvh;
@@ -145,12 +150,8 @@ body {
 a {
   text-decoration: none;
 }
-
-#isFetching__spinner {
-  position: fixed;
-  top: 7rem;
-  right: 2rem;
-  z-index: 1031;
+h1 {
+  display: inline;
 }
 
 #offcanvasNavbar-expand-true {

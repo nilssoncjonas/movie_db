@@ -32,12 +32,8 @@ const Search_Result = () => {
         setSearchParams({query: queryParam, page: String(Number(pageParams) + 1)})
     }
     const onSearch = (searchQuery: string) => {
-        queryClient.invalidateQueries(['search'])
+        queryClient.invalidateQueries(['search/'])
         setSearchParams({query: searchQuery, page: '1'})
-    }
-    //TODO !data => return
-    if (!data) {
-        return
     }
 
     return (
@@ -50,8 +46,7 @@ const Search_Result = () => {
 
             {isLoading && <C_Placeholder_loading/>}
 
-
-            {isSuccess && data.results.length > 1 ? (
+            {isSuccess && data && data.results.length > 1 ? (
                 <>
                     <div className={'text-center'}>
                         <p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>

@@ -28,7 +28,7 @@ const Top_Rated = () => {
     }
 
     return (
-        <>
+        <div className={'body'}>
             <div className={'h2__wrap'}>
                 <h2>Top Rated Movies</h2>
             </div>
@@ -64,7 +64,7 @@ const Top_Rated = () => {
                                msg={'Something went wrong when fetching the Top Rated movies. Please try again... '}/>
             ) : null}
 
-        </>
+        </div>
     )
 }
 

@@ -12,6 +12,7 @@ import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 const Single_Genre = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const pageParams = searchParams.get('page') ?? '1'
+    const genreParams = searchParams.get('genre') ?? 'Genre'
 
     const {id} = useParams()
     const genreId = Number(id)
@@ -31,9 +32,9 @@ const Single_Genre = () => {
     }
 
     return (
-        <>
+        <div  className={'body'}>
             <div className={'h2__wrap'}>
-                <h2>Movies By Genre</h2>
+                <h2>Movies By Genre - {genreParams}</h2>
             </div>
             {isLoading && <C_Placeholder_loading/>}
 
@@ -69,7 +70,7 @@ const Single_Genre = () => {
                                msg={'Something went wrong when search for movies in this genre. Please try again... '}/>
             ) : null}
 
-        </>
+        </div>
     )
 }
 

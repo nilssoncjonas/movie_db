@@ -4,7 +4,6 @@
 @import 'data';
 
 * {
-  //outline: 1px solid #e5a00d;
   color: $font__color;
   transition: all 0.3s ease-in-out;
   padding: 0;
@@ -123,7 +122,7 @@ body {
   background-color: $body__bg;
 }
 .error__wrap {
-  margin: 0 auto;
+  margin: 200px auto 0 auto;
   width: 75%;
   max-width: 630px;
 }
@@ -202,7 +201,7 @@ footer {
   border-bottom: 0;
 }
 
-.home {
+.body {
   min-height: 65vh;
 }
 
@@ -285,9 +284,6 @@ footer {
 }
 
 @media only screen and (min-width: 640px) {
-  * {
-    //outline: 1px solid red;
-  }
   .single__movie__placeholder__wrap {
     margin: 150px auto 0 auto;
     justify-content: center;
@@ -331,14 +327,12 @@ footer {
     margin: 5rem auto;
   }
   .footer__info {
-    flex-wrap: no-wrap;
+    flex-wrap: nowrap;
   }
 }
 
 @media only screen and (min-width: 992px) {
-  * {
-    //outline: 1px solid blue;
-  }
+
   .skeleton__wrap {
     span {
       width: 200px;

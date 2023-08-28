@@ -8,7 +8,7 @@ const useGetNowPlaying = () => {
         isSuccess,
         isError,
         refetch
-    } = useGetData<NowPlayingRes>(['movie/now_playing'], 'movie/now_playing?region=se')
+    } = useGetData<NowPlayingRes>(['movie/now_playing/'], 'movie/now_playing?region=se')
     return {
         data,
         isLoading,

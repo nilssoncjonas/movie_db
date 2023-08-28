@@ -17,7 +17,7 @@ const Single_Person = () => {
     } = useGetPerson(personId)
 
     return (
-        <>
+        <div  className={'body'}>
             {isLoading && (
 
                 <div className={'person__placeholder__loading__wrap'}>
@@ -72,7 +72,7 @@ const Single_Person = () => {
                 <C_ErrorHandle reFetch={refetch} variant={'danger'}
                                msg={'Something went wrong when fetching this person\'s info. Please try again... '}/>
             ) : null}
-        </>
+        </div>
     )
 }
 export default Single_Person

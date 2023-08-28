@@ -220,9 +220,6 @@
 }
 
 @media only screen and (min-width: 640px) {
-  * {
-    //outline: 1px solid #d51515;
-  }
   .data__wrap {
     row-gap: 1.75rem;
     column-gap: 1.75rem;
@@ -287,9 +284,7 @@
 }
 
 @media only screen and (min-width: 992px) {
-  * {
-    //outline: 1px solid #08ecd9;
-  }
+
   .data__wrap {
     row-gap: 3rem;
     column-gap: 2rem;

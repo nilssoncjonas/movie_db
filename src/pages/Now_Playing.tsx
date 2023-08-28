@@ -15,7 +15,7 @@ const Now_Playing = () => {
     } = useGetNowPlaying()
 
     return (
-        <>
+        <div  className={'body'}>
 
             <div className={'h2__wrap'}>
                 <h2>Movies Playing In Theaters Now</h2>
@@ -28,7 +28,7 @@ const Now_Playing = () => {
                 <C_ErrorHandle reFetch={refetch} variant={'danger'}
                                msg={'Something went wrong when fetching the movies that are playing now. Please try again... '}/>
             ) : null}
-        </>
+        </div>
     )
 }
 export default Now_Playing

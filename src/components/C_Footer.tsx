@@ -10,9 +10,10 @@ const C_Footer = () => {
 
                     <h3>The Movie DB</h3>
                     <ul>
-                        <li><Link to={'/movie/now_playing'}>Now Playing</Link></li>
+                        <li><Link to={'/movie/now_playing'}>Playing In Theaters</Link></li>
                         <li><Link to={'/movie/popular'}>Trending Movies</Link></li>
                         <li><Link to={'/movie/top_rated'}>Top Rated Movies</Link></li>
+                        <li><Link to={'/genre'}>Movies By Genre</Link></li>
                     </ul>
 
 
@@ -23,8 +24,6 @@ const C_Footer = () => {
                     <p className={'JN__logo'}><a href={'https://www.jonasnilsson.dev'}><img
                         src={'https://www.jonasnilsson.dev/img/svg/jn_logo.svg'} alt="Jonas Nilsson"/> <span
                         id={'JN__link'}>jonasnilsson.dev</span></a></p>
-                    {/*<hr/>*/}
-
                     <p><a href={'https://developer.themoviedb.org/docs'}>All data provided by <span>TMDB-API</span></a>
                     <a href={'https://www.themoviedb.org/'}>
                         <img className={'TMDB__logo'}

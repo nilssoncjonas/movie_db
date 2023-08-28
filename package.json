@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "host": "vite --host",
     "predeploy": "npm run build",
-    "deploy": "netlify deploy --prod"
+    "deploy": "netlify deploy dist"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.33.0",

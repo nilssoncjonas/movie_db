@@ -19,7 +19,7 @@ const Home = () => {
 
 
     return (
-        <div className={'home'}>
+        <div className={'body'}>
 
             <div className={'h2__wrap'}>
                 <h2>Welcome!</h2>

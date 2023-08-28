@@ -8,7 +8,7 @@ const useGetSearch = (queryParam: string,  pageParams: string) => {
         isSuccess,
         isError,
         refetch
-    } = useGetData<MovieRes>(['search', queryParam, pageParams], `search/movie?query=${queryParam}&include_adult=false&language=en-US&page=${pageParams}`)
+    } = useGetData<MovieRes>(['search/', queryParam, pageParams], `search/movie?query=${queryParam}&include_adult=false&language=en-US&page=${pageParams}`)
     return {
         data,
         isLoading,

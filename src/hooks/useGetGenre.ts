@@ -8,7 +8,7 @@ const useGetGenre = () => {
         isSuccess,
         isError,
         refetch
-    } = useGetData<GenreList>(['genres'], 'genre/movie/list?&language=en')
+    } = useGetData<GenreList>(['genres/'], 'genre/movie/list?&language=en')
     return {
         data,
         isLoading,

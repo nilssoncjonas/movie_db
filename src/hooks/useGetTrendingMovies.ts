@@ -8,7 +8,7 @@ const useGetTrendingMovies = (timeParams: string, pageParams: string) => {
         isSuccess,
         isError,
         isFetching, refetch
-    } = useGetData<MovieRes>(['movie/popular', timeParams, pageParams], `trending/movie/${timeParams}?language=en-US&include_adult=false&page=${pageParams}`)
+    } = useGetData<MovieRes>(['movie/popular/', timeParams, pageParams], `trending/movie/${timeParams}?language=en-US&include_adult=false&page=${pageParams}`)
     return {
         data,
         isLoading,

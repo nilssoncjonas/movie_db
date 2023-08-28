@@ -32,7 +32,7 @@ const Popular_Movie = () => {
         setSearchParams({time_window: timeParams === 'day' ? 'day' : 'week', page: String(Number(pageParams) + 1)})
     }
     return (
-        <>
+        <div  className={'body'}>
             <div className={'h2__wrap'}>
                 <h2>Trending Movies {timeParams === 'day' ? 'Today!' : 'This Week!'}</h2>
             </div>
@@ -78,7 +78,7 @@ const Popular_Movie = () => {
                                msg={'Something went wrong when fetching the trending movies. Please try again... '}/>
             ) : null}
 
-        </>
+        </div>
     )
 }
 

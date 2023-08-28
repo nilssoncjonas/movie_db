@@ -33,7 +33,7 @@ const Single_Movie = () => {
     }
 
     return (
-        <>
+        <div className={'body'}>
             {isLoading && (
                 <>
                     <div className={'single__movie__placeholder__wrap'}>
@@ -124,7 +124,7 @@ const Single_Movie = () => {
                 <C_ErrorHandle reFetch={refetch} variant={'danger'}
                                msg={'Something went wrong when fetching info about this movie. Please try again... '}/>
             ) : null}
-        </>
+        </div>
     )
 }
 

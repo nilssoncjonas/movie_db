@@ -8,7 +8,7 @@ const useGetTopRated = (pageParams: string) => {
         isSuccess,
         isError,
         refetch
-    } = useGetData<MovieRes>(['movie/top_rated', pageParams], `movie/top_rated?page=${pageParams}&region=se`)
+    } = useGetData<MovieRes>(['movie/top_rated/', pageParams], `movie/top_rated?page=${pageParams}&region=se`)
     return {
         data,
         isLoading,

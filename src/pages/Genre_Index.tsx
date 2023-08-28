@@ -14,7 +14,7 @@ const Genre_Index = () => {
         refetch
     } = useGetGenre()
     return (
-        <>
+        <div className={'body'}>
             <div className={'h2__wrap'}>
                 <h2>Movie Genres</h2>
             </div>
@@ -22,7 +22,7 @@ const Genre_Index = () => {
             {isSuccess && data ? (
                 <div className={'genre__wrap'}>
                     {data.genres.map(g => (
-                        <Link to={`/genre/${g.id}`} key={g.id}>
+                        <Link to={`/genre/${g.id}?genre=${g.name}`} key={g.id}>
                             <div className={'genre__img'}>
                                 <img src={`https://placehold.co/200x200/212529/e5a00d?text=${g.name}&font=montserrat`}
                                      alt={g.name}/>
@@ -35,7 +35,7 @@ const Genre_Index = () => {
                 <C_ErrorHandle reFetch={refetch} variant={'danger'}
                                msg={'Something went wrong when fetching movie genres. Please try again... '}/>
             ) : null}
-        </>
+        </div>
     )
 }
 

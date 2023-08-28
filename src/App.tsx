@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound.tsx";
 // components
 import C_GlobalLoading from "./components/C_GlobalLoading.tsx";
 import C_Navigation from "./components/C_Navigation.tsx";
+import C_Footer from "./components/C_Footer.tsx";
 
 function App() {
 	return (
@@ -54,6 +55,7 @@ function App() {
 				<Route path={'*'} element={<NotFound/>}/>
 
 			</Routes>
+			<C_Footer />
 		</div>
 	)
 }

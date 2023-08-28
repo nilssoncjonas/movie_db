@@ -48,7 +48,7 @@ const Single_Movie = () => {
                                 <p>
                                     {data.credits.crew.filter(c => c.job === "Director").length > 1 ? 'Directors: ' : 'Director: '}
                                     {data.credits.crew.filter(c => c.job === "Director").map(c =>
-                                        <span> {c.name} </span>)}
+                                        <span key={c.id}> {c.name} </span>)}
                                 </p>
                                 <p>Runtime: {data.runtime} min</p>
                                 <p>Budget: $ {new Intl.NumberFormat('sv-Se').format(data.budget)}</p>

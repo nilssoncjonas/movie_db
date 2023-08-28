@@ -66,6 +66,85 @@ nav {
   margin: 1rem auto 1rem auto;
 }
 
+footer {
+  background-image: linear-gradient($bg__fade__start, $bg__fade__end);
+  padding: 2rem 0.5rem;
+  max-width: 1230px;
+  margin: 0 auto;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.footer__menu {
+  h3 {
+    width: fit-content;
+    margin: 0 auto 1rem auto;
+  }
+
+  ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+
+    li {
+      margin: 0 0.5rem 0 0.5rem;
+
+      a {
+
+        color: $font__color;
+
+        &:hover {
+          color: $highlight__clr;
+        }
+      }
+    }
+  }
+
+}
+
+.footer__info {
+  p {
+    width: fit-content;
+    margin: 1rem auto;
+
+    a {
+      color: $font__color;
+
+      span {
+        color: $TMDB__2nd;
+      }
+    }
+
+    img {
+      width: 200px;
+    }
+  }
+}
+
+.JN__logo {
+  text-align: center;
+
+  a {
+    color: $font__color;
+
+    img {
+      margin: 0.5rem auto;
+      display: block;
+      filter: invert(74%) sepia(42%) saturate(2022%) hue-rotate(352deg) brightness(190%) contrast(75%);
+    }
+
+  }
+}
+
+#JN__link {
+  color: $font__color;
+
+  &:hover {
+    color: $highlight__clr;
+  }
+}
+
 @media only screen and (min-width: 768px) {
 
   .h2__wrap {

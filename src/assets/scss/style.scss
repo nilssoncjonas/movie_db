@@ -193,7 +193,7 @@ nav {
 
 footer {
   background-image: linear-gradient($bg__fade__start, $bg__fade__end);
-  padding: 2rem 0.5rem;
+  padding: 2rem 0.5rem 0 0.5rem;
   width: 100%;
   max-width: 1230px;
   margin: 4rem auto 0 auto;
@@ -236,6 +236,9 @@ footer {
 }
 
 .footer__info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   p {
     width: fit-content;
     margin: 1rem auto;
@@ -252,6 +255,10 @@ footer {
       width: 200px;
     }
   }
+}
+.TMDB__logo {
+  display: block;
+  margin: 0 auto;
 }
 
 .JN__logo {
@@ -322,6 +329,9 @@ footer {
   .form__wrap {
     width: 60%;
     margin: 5rem auto;
+  }
+  .footer__info {
+    flex-wrap: no-wrap;
   }
 }
 

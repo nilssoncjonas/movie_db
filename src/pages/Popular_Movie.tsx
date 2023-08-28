@@ -9,6 +9,7 @@ import C_Pagination from "../components/C_Pagination.tsx";
 // style
 import Button from "react-bootstrap/Button";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
+import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
 const Popular_Movie = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -17,6 +18,7 @@ const Popular_Movie = () => {
 
     const {
         data,
+        isLoading,
         isSuccess,
         isError,
         isFetching, refetch
@@ -36,6 +38,7 @@ const Popular_Movie = () => {
             <div className={'h2__wrap'}>
                 <h2>Trending Movies {timeParams === 'day' ? 'Today!' : 'This Week!'}</h2>
             </div>
+            {isLoading && <C_Placeholder_loading/>}
             {isSuccess && data ? (
                 <>
 

@@ -2,10 +2,12 @@ import useGetData from "../hooks/useGetData.ts"
 import {GenreList} from "../types/index.types.ts"
 import {Link} from "react-router-dom"
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
+import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
 const Genre_Index = () => {
     const {
         data,
+        isLoading,
         isSuccess,
         isError,
         refetch
@@ -16,6 +18,7 @@ const Genre_Index = () => {
             <div className={'h2__wrap'}>
                 <h2>Movie Genres</h2>
             </div>
+            {isLoading && <C_Placeholder_loading/>}
             {isSuccess && data ? (
                 <div className={'genre__wrap'}>
                     {data.genres.map(g => (

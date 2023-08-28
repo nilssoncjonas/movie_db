@@ -8,6 +8,7 @@ const Single_Person = () => {
     const personId = Number(id)
     const {
         data,
+        isLoading,
         isSuccess,
         isError,
         refetch
@@ -15,6 +16,26 @@ const Single_Person = () => {
 
     return (
         <>
+            {isLoading && (
+
+                <div className={'person__placeholder__loading__wrap'}>
+                    <span className="image placeholder placeholder-wave bg-warning"></span>
+
+                    <span className="name placeholder placeholder-wave bg-warning"></span>
+
+                    <span className="info placeholder placeholder-wave bg-warning"></span>
+
+                    <span className="heading placeholder placeholder-wave bg-warning"></span>
+                    <span className="text placeholder placeholder-wave bg-warning"></span>
+                    <span className="text placeholder placeholder-wave bg-warning"></span>
+                    <span className="text placeholder placeholder-wave bg-warning"></span>
+                    <span className="text placeholder placeholder-wave bg-warning"></span>
+                    <span className="text placeholder placeholder-wave bg-warning"></span>
+                    <span className="text placeholder placeholder-wave bg-warning"></span>
+                    <span className="text placeholder placeholder-wave bg-warning"></span>
+                </div>
+            )}
+
             {isSuccess && data ? (
                 <div className={'person__wrap'}>
                     <img className={'person__img'} src={`https://image.tmdb.org/t/p/w500${data.profile_path}`}
@@ -35,7 +56,9 @@ const Single_Person = () => {
                     <div className={'person__cast'}>
                         {data.movie_credits.cast.map(c => (
                             <Link to={`/movie/${c.id}`} key={c.id}>
-                                <img src={c.poster_path === null ? 'https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat' : `https://image.tmdb.org/t/p/w200${c.poster_path}`} alt={c.title}/>
+                                <img
+                                    src={c.poster_path === null ? 'https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat' : `https://image.tmdb.org/t/p/w200${c.poster_path}`}
+                                    alt={c.title}/>
                                 <p>{c.title} as {c.character}</p>
                             </Link>
                         ))}
@@ -45,7 +68,8 @@ const Single_Person = () => {
             ) : null}
             {isError ? (
                 <div className={'data__wrap mx-4'}>
-                    <C_ErrorHandle reFetch={refetch} variant={'danger'} msg={'Something went wrong, could not fetch the data. Please try again... '}/>
+                    <C_ErrorHandle reFetch={refetch} variant={'danger'}
+                                   msg={'Something went wrong, could not fetch the data. Please try again... '}/>
                 </div>
             ) : null}
         </>

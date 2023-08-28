@@ -4,6 +4,7 @@ import useGetData from "../hooks/useGetData.ts";
 import C_MovieList from "../components/C_MovieList.tsx";
 import C_Pagination from "../components/C_Pagination.tsx";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
+import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
 const Single_Genre = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -14,6 +15,7 @@ const Single_Genre = () => {
 
 	const {
 		data,
+		isLoading,
 		isSuccess,
 		isError,
 		refetch
@@ -34,6 +36,7 @@ const Single_Genre = () => {
 			<div className={'h2__wrap'}>
 				<h2>Movies By Genre</h2>
 			</div>
+			{isLoading && <C_Placeholder_loading/>}
 
 			{isSuccess && data ? (
 				<>

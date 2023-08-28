@@ -7,6 +7,7 @@ import {MovieRes} from "../types/index.types.ts";
 import C_MovieList from "../components/C_MovieList.tsx";
 import C_Pagination from "../components/C_Pagination.tsx";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
+import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
 
 const Top_Rated = () => {
@@ -15,6 +16,7 @@ const Top_Rated = () => {
 
 	const {
 		data,
+		isLoading,
 		isSuccess,
 		isError,
 		refetch
@@ -34,6 +36,7 @@ const Top_Rated = () => {
 			<div className={'h2__wrap'}>
 				<h2>Top Rated Movies</h2>
 			</div>
+			{isLoading && <C_Placeholder_loading/>}
 
 			{isSuccess && data ? (
 				<>

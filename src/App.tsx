@@ -28,7 +28,6 @@ function App() {
 		<div id={'app'}>
 			<C_Navigation/>
 			<C_GlobalLoading/>
-			{/*TODO footer component*/}
 			<Routes>
 				<Route path={'/'} element={<Home/>}/>
 

@@ -6,6 +6,7 @@ import C_MovieList from "../components/C_MovieList.tsx";
 import C_SearchForm from "../components/C_SearchForm.tsx";
 import {useQueryClient} from "@tanstack/react-query";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
+import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
 const Search_Result = () => {
 
@@ -28,10 +29,12 @@ const Search_Result = () => {
     }
     const {
         data,
+        isLoading,
         isSuccess,
         isError,
         refetch
     } = useGetData<MovieRes>(['search', queryParam, pageParams], `search/movie?query=${queryParam}&include_adult=false&language=en-US&page=${pageParams}`)
+    // TODO om inget matchar sökfrågan
     return (
         <>
             <div className={'h2__wrap'}>
@@ -39,6 +42,7 @@ const Search_Result = () => {
             </div>
 
             <C_SearchForm onSearch={onSearch}/>
+            {isLoading && <C_Placeholder_loading />}
 
             {isSuccess && data ? (
                 <>

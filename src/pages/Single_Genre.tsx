@@ -22,7 +22,6 @@ const Single_Genre = () => {
         isLoading,
         isSuccess,
         isError,
-        refetch
     } = useGetMoviesInGenre(genreId, pageParams)
     const prevPage = () => {
         setSearchParams({page: String(Number(pageParams) - 1)})
@@ -33,9 +32,11 @@ const Single_Genre = () => {
 
     return (
         <div  className={'body'}>
+            
             <div className={'h2__wrap'}>
                 <h2>Movies By Genre - {genreParams}</h2>
             </div>
+            
             {isLoading && <C_Placeholder_loading/>}
 
             {isSuccess && data ? (
@@ -65,9 +66,10 @@ const Single_Genre = () => {
 
                 </>
             ) : null}
+            
             {isError ? (
-                <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                               msg={'Something went wrong when search for movies in this genre. Please try again... '}/>
+                <C_ErrorHandle variant={'danger'}
+                               msg={'Something went wrong when search for movies in this genre.'}/>
             ) : null}
 
         </div>

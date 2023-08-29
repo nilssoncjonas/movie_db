@@ -9,7 +9,6 @@ import Button from "react-bootstrap/Button";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
-
 const Popular_Movie = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const pageParams = searchParams.get('page') ?? '1'
@@ -20,8 +19,7 @@ const Popular_Movie = () => {
         isLoading,
         isSuccess,
         isError,
-        isFetching, refetch
-
+        isFetching
     } = useGetTrendingMovies(timeParams, pageParams)
 
 
@@ -74,8 +72,7 @@ const Popular_Movie = () => {
                 </>
             ) : null}
             {isError ? (
-                <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                               msg={'Something went wrong when fetching the trending movies. Please try again... '}/>
+                <C_ErrorHandle variant={'danger'} msg={'Something went wrong when fetching the trending movies.'}/>
             ) : null}
 
         </div>

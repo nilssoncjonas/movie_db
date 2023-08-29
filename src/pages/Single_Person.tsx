@@ -4,7 +4,6 @@ import useGetPerson from "../hooks/useGetPerson.ts";
 // components
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 
-
 const Single_Person = () => {
     const {id} = useParams()
     const personId = Number(id)
@@ -13,7 +12,6 @@ const Single_Person = () => {
         isLoading,
         isSuccess,
         isError,
-        refetch
     } = useGetPerson(personId)
 
     return (
@@ -69,8 +67,7 @@ const Single_Person = () => {
                 </div>
             ) : null}
             {isError ? (
-                <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                               msg={'Something went wrong when fetching this person\'s info. Please try again... '}/>
+                <C_ErrorHandle variant={'danger'} msg={'Something went wrong when fetching this person\'s info.'}/>
             ) : null}
         </div>
     )

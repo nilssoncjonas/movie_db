@@ -15,9 +15,7 @@ const Single_Movie = () => {
         isLoading,
         isSuccess,
         isError,
-        refetch
     } = useGetMovie(movieId)
-
 
     if (isSuccess && data) {
         const movieHistory = window.localStorage.getItem('movieHistory') ?? '[]'
@@ -121,8 +119,7 @@ const Single_Movie = () => {
                 </>
             ) : null}
             {isError ? (
-                <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                               msg={'Something went wrong when fetching info about this movie. Please try again... '}/>
+                <C_ErrorHandle variant={'danger'} msg={'Something went wrong when fetching info about this movie.'}/>
             ) : null}
         </div>
     )

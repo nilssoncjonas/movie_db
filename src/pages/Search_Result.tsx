@@ -9,7 +9,6 @@ import C_SearchForm from "../components/C_SearchForm.tsx";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
-
 const Search_Result = () => {
 
     const queryClient = useQueryClient()
@@ -22,7 +21,6 @@ const Search_Result = () => {
         isLoading,
         isSuccess,
         isError,
-        refetch
     } = useGetSearch(queryParam, pageParams)
 
     const prevPage = () => {
@@ -38,6 +36,7 @@ const Search_Result = () => {
 
     return (
         <div className={'search__page'}>
+            
             <div className={'h2__wrap'}>
                 <h2>Search Result for "{queryParam}"</h2>
             </div>
@@ -81,8 +80,7 @@ const Search_Result = () => {
 
             )}
             {isError ? (
-                <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                               msg={'Something went wrong when searching. Please try again... '}/>
+                <C_ErrorHandle variant={'danger'} msg={'Something went wrong when searching.'}/>
             ) : null}
         </div>
     )

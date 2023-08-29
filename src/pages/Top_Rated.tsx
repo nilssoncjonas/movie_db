@@ -7,7 +7,6 @@ import C_Pagination from "../components/C_Pagination.tsx";
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Placeholder_loading from "../components/C_Placeholder_loading.tsx";
 
-
 const Top_Rated = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const pageParams = searchParams.get('page') ?? '1'
@@ -17,7 +16,6 @@ const Top_Rated = () => {
         isLoading,
         isSuccess,
         isError,
-        refetch
     } = useGetTopRated(pageParams)
 
     const prevPage = () => {
@@ -29,9 +27,11 @@ const Top_Rated = () => {
 
     return (
         <div className={'body'}>
+            
             <div className={'h2__wrap'}>
                 <h2>Top Rated Movies</h2>
             </div>
+            
             {isLoading && <C_Placeholder_loading/>}
 
             {isSuccess && data ? (
@@ -48,6 +48,7 @@ const Top_Rated = () => {
                         />
                     </div>
                     <C_MovieList res={data.results}/>
+                    
                     <C_Pagination
                         page={data.page}
                         total_pages={data.total_pages}
@@ -60,8 +61,7 @@ const Top_Rated = () => {
             ) : null}
 
             {isError ? (
-                <C_ErrorHandle reFetch={refetch} variant={'danger'}
-                               msg={'Something went wrong when fetching the Top Rated movies. Please try again... '}/>
+                <C_ErrorHandle variant={'danger'} msg={'Something went wrong when fetching the Top Rated movies.'}/>
             ) : null}
 
         </div>

@@ -1,5 +1,5 @@
 const C_MoviePage_Placeholder = () => {
-	
+
 	return (
 		<>
 			<div className={'single__movie__placeholder__wrap'}>

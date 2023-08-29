@@ -1,5 +1,5 @@
 import * as TMDB_API from '../services/TMDB_API'
-import {useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const useGetData = <T>(queryKey: (string | number)[], resource: string) => {
 

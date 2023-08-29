@@ -9,50 +9,47 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 const C_Navigation = () => {
-const expand = true
-    return (
-        <>
-            <Navbar expand='md' variant="dark" className="bg-dark mb-3" fixed={"top"}>
+	const expand = true
+	return (
+		<>
+			<Navbar expand='md' variant="dark" className="bg-dark mb-3" fixed={"top"}>
 
-                <Container fluid>
+				<Container fluid>
 
-                    <Navbar.Brand as={Link} to={'/'}><h1>The Movie DB </h1><C_GlobalLoading/></Navbar.Brand>
+					<Navbar.Brand as={Link} to={'/'}><h1>The Movie DB </h1><C_GlobalLoading /></Navbar.Brand>
 
+					<Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
-                    <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+					<Navbar.Offcanvas
+						id={`offcanvasNavbar-expand-${expand}`}
+						aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+						placement="end"
+					>
+						<Offcanvas.Header closeButton>
 
-                    <Navbar.Offcanvas
-                        id={`offcanvasNavbar-expand-${expand}`}
-                        aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                        placement="end"
-                    >
-                        <Offcanvas.Header closeButton>
+							<Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+								The Movie DB 🎬
+							</Offcanvas.Title>
+						</Offcanvas.Header>
 
-                            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                                The Movie DB 🎬
-                            </Offcanvas.Title>
-                        </Offcanvas.Header>
+						<Offcanvas.Body>
+							<Nav className="justify-content-end flex-grow-1 pe-3 text-center">
+								<Nav.Link as={NavLink} to={'/movie/now_playing'}>Now Playing</Nav.Link>
+								<Nav.Link as={NavLink} to={'/movie/popular'}>Trending Movies</Nav.Link>
+								<Nav.Link as={NavLink} to={'/movie/top_rated'}>Top Rated Movies</Nav.Link>
+								<Nav.Link as={NavLink} to={'/genre'}>Discover Movies By Genres</Nav.Link>
 
-                        <Offcanvas.Body>
-                            <Nav className="justify-content-end flex-grow-1 pe-3 text-center">
-                                <Nav.Link as={NavLink} to={'/movie/now_playing'}>Now Playing</Nav.Link>
-                                <Nav.Link as={NavLink} to={'/movie/popular'}>Trending Movies</Nav.Link>
-                                <Nav.Link as={NavLink} to={'/movie/top_rated'}>Top Rated Movies</Nav.Link>
-                                <Nav.Link as={NavLink} to={'/genre'}>Discover Movies By Genres</Nav.Link>
+							</Nav>
 
-                            </Nav>
+						</Offcanvas.Body>
 
+					</Navbar.Offcanvas>
 
+				</Container>
 
-                        </Offcanvas.Body>
-
-                    </Navbar.Offcanvas>
-
-                </Container>
-
-            </Navbar>
-        </>
-    )
+			</Navbar>
+		</>
+	)
 }
 
 export default C_Navigation

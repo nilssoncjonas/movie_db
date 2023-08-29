@@ -11,7 +11,7 @@ interface Props {
 	nextPage: () => void
 }
 
-const C_Pagination: React.FC<Props> = ({prevPage, nextPage, hasNextPage, hasPrevPage, page, total_pages }) => {
+const C_Pagination: React.FC<Props> = ({ prevPage, nextPage, hasNextPage, hasPrevPage, page, total_pages }) => {
 
 	return (
 		<>

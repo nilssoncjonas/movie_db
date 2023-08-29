@@ -1,5 +1,5 @@
 import React from 'react'
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // style
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -9,7 +9,7 @@ interface Props {
 	msg: string
 }
 
-const C_ErrorHandle: React.FC<Props> = ({variant, msg}) => {
+const C_ErrorHandle: React.FC<Props> = ({ variant, msg }) => {
 	const navigate = useNavigate()
 	return (
 		<div className={'error__wrap'}>

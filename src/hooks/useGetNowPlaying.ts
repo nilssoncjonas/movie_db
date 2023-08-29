@@ -1,9 +1,9 @@
 import useGetData from "./useGetData.ts";
-import {NowPlayingRes} from "../types/index.types.ts";
+import { NowPlayingRes } from "../types/index.types.ts";
 
 const useGetNowPlaying = (pageParams: string) => {
- return useGetData<NowPlayingRes>(['movie/now_playing/', pageParams], `movie/now_playing?page=${pageParams}&region=US`)
-    
+	return useGetData<NowPlayingRes>(['movie/now_playing/', pageParams], `movie/now_playing?page=${pageParams}&region=US`)
+
 }
 
 export default useGetNowPlaying

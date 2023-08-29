@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 // style
 import './assets/scss/style.scss'
 // pages
@@ -23,16 +23,16 @@ import C_Footer from "./components/C_Footer.tsx";
 function App() {
 	return (
 		<div id={'app'}>
-			<C_Navigation/>
+			<C_Navigation />
 
 			<Routes>
-				<Route path={'/'} element={<Home/>}/>
+				<Route path={'/'} element={<Home />} />
 
 				<Route path={'/movie'}>
-					<Route path={':id'} element={<Single_Movie/>}/>
-					<Route path={'now_playing'} element={<Now_Playing/>}/>
-					<Route path={'top_rated'} element={<Top_Rated/>}/>
-					<Route path={'popular'} element={<Popular_Movie/>}/>
+					<Route path={':id'} element={<Single_Movie />} />
+					<Route path={'now_playing'} element={<Now_Playing />} />
+					<Route path={'top_rated'} element={<Top_Rated />} />
+					<Route path={'popular'} element={<Popular_Movie />} />
 				</Route>
 
 				<Route path={'/person'}>
@@ -45,9 +45,9 @@ function App() {
 					<Route path={':id'} element={<Single_Genre />} />
 
 				</Route>
-					<Route path={'/search'} element={<Search_Result />} />
+				<Route path={'/search'} element={<Search_Result />} />
 
-				<Route path={'*'} element={<NotFound/>}/>
+				<Route path={'*'} element={<NotFound />} />
 
 			</Routes>
 			<C_Footer />

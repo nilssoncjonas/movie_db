@@ -16,7 +16,7 @@ const C_Navigation = () => {
 
 				<Container fluid>
 
-					<Navbar.Brand as={Link} to={'/'}><h1>The Movie DB </h1><C_GlobalLoading /></Navbar.Brand>
+					<Navbar.Brand as={Link} to={'/'}><h1>The Movie DB</h1><C_GlobalLoading /></Navbar.Brand>
 
 					<Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
@@ -27,8 +27,8 @@ const C_Navigation = () => {
 					>
 						<Offcanvas.Header closeButton>
 
-							<Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-								The Movie DB 🎬
+							<Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} >
+								The Movie DB 🎞️
 							</Offcanvas.Title>
 						</Offcanvas.Header>
 

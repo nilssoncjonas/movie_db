@@ -3,6 +3,7 @@ import {Link, useParams} from "react-router-dom";
 import useGetPerson from "../hooks/useGetPerson.ts";
 // components
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
+import C_Person_Placeholder from "../components/C_Person_Placeholder.tsx";
 
 const Single_Person = () => {
     const {id} = useParams()
@@ -16,25 +17,7 @@ const Single_Person = () => {
 
     return (
         <div  className={'body'}>
-            {isLoading && (
-
-                <div className={'person__placeholder__loading__wrap'}>
-                    <span className="image placeholder placeholder-wave bg-warning"></span>
-
-                    <span className="name placeholder placeholder-wave bg-warning"></span>
-
-                    <span className="info placeholder placeholder-wave bg-warning"></span>
-
-                    <span className="heading placeholder placeholder-wave bg-warning"></span>
-                    <span className="text placeholder placeholder-wave bg-warning"></span>
-                    <span className="text placeholder placeholder-wave bg-warning"></span>
-                    <span className="text placeholder placeholder-wave bg-warning"></span>
-                    <span className="text placeholder placeholder-wave bg-warning"></span>
-                    <span className="text placeholder placeholder-wave bg-warning"></span>
-                    <span className="text placeholder placeholder-wave bg-warning"></span>
-                    <span className="text placeholder placeholder-wave bg-warning"></span>
-                </div>
-            )}
+            {isLoading && <C_Person_Placeholder />}
 
             {isSuccess && data ? (
                 <div className={'person__wrap'}>
@@ -56,9 +39,7 @@ const Single_Person = () => {
                     <div className={'person__cast'}>
                         {data.movie_credits.cast.map(c => (
                             <Link to={`/movie/${c.id}`} key={c.id}>
-                                <img
-                                    src={c.poster_path === null ? 'https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat' : `https://image.tmdb.org/t/p/w200${c.poster_path}`}
-                                    alt={c.title}/>
+                                <img src={c.poster_path === null ? 'https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat' : `https://image.tmdb.org/t/p/w200${c.poster_path}`} alt={c.title}/>
                                 <p>{c.title} as {c.character}</p>
                             </Link>
                         ))}

@@ -29,3 +29,8 @@ export type MovieHistory = {
 	title: string,
 	poster_path: string
 }
+export type PersonHistory = {
+	id: number,
+	name: string,
+	profile_path: string
+}

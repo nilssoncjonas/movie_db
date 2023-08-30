@@ -31,7 +31,7 @@ useEffect(() => {
 				id: movieId,
 				title: data.title,
 				poster_path: data.poster_path
-			}, ...movieList]))
+			}, ...movieList.slice(0,9)]))
 		}
 	}
 }, [data, movieId])

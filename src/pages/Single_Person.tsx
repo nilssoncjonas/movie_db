@@ -4,6 +4,8 @@ import useGetPerson from "../hooks/useGetPerson.ts";
 // components
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Person_Placeholder from "../components/C_Person_Placeholder.tsx";
+import {useEffect} from "react";
+import {SinglePerson} from "../types/index.types.ts";
 
 const Single_Person = () => {
 	const { id } = useParams()
@@ -14,7 +16,22 @@ const Single_Person = () => {
 		isSuccess,
 		isError,
 	} = useGetPerson(personId)
-
+	
+	useEffect(() => {
+		if (personId && data) {
+			const personHistory = window.localStorage.getItem('personHistory') ?? '[]'
+			const personList = JSON.parse(personHistory)
+			
+			if (!personList.some((obj: SinglePerson) => obj.name === data.name)) {
+				window.localStorage.setItem('personHistory', JSON.stringify([{
+					id: personId,
+					name: data.name,
+					profile_path: data.profile_path
+				}, ...personList.slice(0,9)]))
+			}
+		}
+	}, [data, personId])
+	
 	return (
 		<div className={'body'}>
 			{isLoading && <C_Person_Placeholder />}

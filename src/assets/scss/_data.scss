@@ -103,6 +103,22 @@
     }
   }
 }
+.vote__wrap {
+	outline: 1px solid $highlight__clr;
+	width: 100%;
+	padding: 0.1rem;
+	margin-bottom: 0.25rem;
+	border-radius: 0.2rem;
+	color: $font__color;
+	text-align: center;
+
+}
+.vote__average {
+	background-color: $highlight__clr;
+	text-align: center;
+	color: $body__bg;
+	border-radius: 0.2rem;
+}
 
 .single__movie__cover {
   position: relative;
@@ -242,7 +258,7 @@
     div {
       p {
 
-        span {
+		  .director__span {
           &:first-child {
             display: inline;
           }

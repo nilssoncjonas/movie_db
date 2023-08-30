@@ -25,7 +25,6 @@ useEffect(() => {
 	if (movieId && data) {
 		const movieHistory = window.localStorage.getItem('movieHistory') ?? '[]'
 		const movieList = JSON.parse(movieHistory)
-		console.log('Från localstorage',movieList)
 
 		if (!movieList.some((obj: MovieHistory) => obj.title === data.title)) {
 			window.localStorage.setItem('movieHistory', JSON.stringify([{
@@ -36,8 +35,6 @@ useEffect(() => {
 		}
 	}
 }, [data, movieId])
-	
-	
 	return (
 		<div className={'body'}>
 			{isLoading && <C_MoviePage_Placeholder />}
@@ -54,11 +51,17 @@ useEffect(() => {
 							</div>
 							<div>
 								<p>Status: {data.status}</p>
+								<p> <span>Popularity:</span>
+									<span className={'vote__wrap'}>{data.vote_average  === 0 ? 'No Rating' : (
+										<span className={'vote__average'} style={{width: `${data.vote_average >= 13 ? 13 : data.vote_average * 10}%`}}>{Math.floor(data.vote_average * 10)}%
+										</span>)}
+									</span>
+								</p>
 								<p>Release date: {data.release_date}</p>
 								<p>
 									{data.credits.crew.filter(c => c.job === "Director").length > 1 ? 'Directors: ' : 'Director: '}
 									{data.credits.crew.filter(c => c.job === "Director").map(c =>
-										<span key={c.id}> {c.name} </span>)}
+										<span className={'director__span'} key={c.id}> {c.name} </span>)}
 								</p>
 								<p>Runtime: {data.runtime} min</p>
 								<p>Budget: $ {new Intl.NumberFormat('sv-Se').format(data.budget)}</p>

@@ -122,6 +122,12 @@
 	align-items: center;
 	aspect-ratio: 1/1;
 	font-size: 0.9rem;
+	&:hover {
+		color: $body__bg;
+		background-color: $highlight__clr;
+		outline: 2px solid $body__bg;
+		box-shadow: 0 0 5px 1px $img__border__shadow;
+	}
 }
 
 .vote__wrap {

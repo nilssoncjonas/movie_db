@@ -14,8 +14,9 @@ const C_ErrorHandle: React.FC<Props> = ({ variant, msg }) => {
 	return (
 		<div className={'error__wrap'}>
 			<Alert key={variant} variant={variant}>
-				Whops! {msg}
-				<Button variant={`outline-${variant}`} className={'mt-2'} onClick={() => navigate('/')}> Or Go Back To Startpage!</Button>
+				<h2>Whops!</h2>
+				{msg}
+				<Button variant={`outline-${variant}`} className={'mt-2'} onClick={() => navigate('/')}>Go back to the startpage!</Button>
 			</Alert>
 		</div>
 	)

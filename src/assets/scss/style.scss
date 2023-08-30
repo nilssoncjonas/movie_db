@@ -2,6 +2,8 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'utilities';
 @import 'data';
+@import 'movie';
+@import 'person';
 
 * {
 	color: $font__color;

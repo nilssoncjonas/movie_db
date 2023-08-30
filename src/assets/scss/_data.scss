@@ -45,7 +45,7 @@
 	}
 }
 
-// genre
+
 .genre__wrap {
 	display: flex;
 	flex-wrap: wrap;
@@ -66,46 +66,6 @@
 	}
 }
 
-.single__movie__wrap {
-	h3 {
-		padding-left: 1rem
-	}
-
-	min-height: 100dvh;
-}
-
-// single movie
-.single__movie__header {
-	width: 100%;
-	max-width: 1230px;
-	margin: 70px auto 0 auto;
-	height: 200px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
-	mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-}
-
-.single__movie__data {
-	display: flex;
-
-	div {
-		width: 50%;
-		max-width: 300px;
-		margin: 0 auto;
-
-		p {
-			font-size: 0.9rem;
-			margin-top: 1rem;
-			border-bottom: $highlight__clr 1px solid;
-			padding: 0 0.5rem;
-
-			span {
-				display: block;
-			}
-		}
-	}
-}
 
 .vote__average__badge {
 	background-color: $body__bg;
@@ -122,54 +82,13 @@
 	align-items: center;
 	aspect-ratio: 1/1;
 	font-size: 0.9rem;
+
 	&:hover {
 		color: $body__bg;
 		background-color: $highlight__clr;
 		outline: 2px solid $body__bg;
 		box-shadow: 0 0 5px 1px $img__border__shadow;
 	}
-}
-
-.vote__wrap {
-	outline: 1px solid $highlight__clr;
-	width: 100%;
-	padding: 0.1rem;
-	margin-bottom: 0.25rem;
-	border-radius: 0.2rem;
-	color: $font__color;
-	text-align: center;
-
-}
-
-.vote__average {
-	background-color: $highlight__clr;
-	text-align: center;
-	color: $body__bg;
-	border-radius: 0.2rem;
-}
-
-.single__movie__cover {
-	position: relative;
-	top: -50px;
-	left: 15%;
-	border-radius: 1rem;
-	box-shadow: 0 0 1px 2px $img__border__shadow;
-	max-width: 145px;
-}
-
-.single__movie__title {
-	padding: 0.25rem 0.5rem;
-	top: -20px;
-
-	span {
-		display: block;
-		font-size: 0.95rem;
-		margin-top: 0.5rem;
-	}
-}
-
-.single__movie__overview {
-	margin: 0 1rem 3rem 1rem;
 }
 
 .single__movie__cast, .single__movie__similar, .person__cast, .movie__history, .person__history {
@@ -200,70 +119,6 @@
 	padding-left: 1rem;
 }
 
-// single person
-.person__wrap {
-	margin: 90px auto 3rem auto;
-	max-width: 930px;
-
-	.person__img {
-		width: 95vw;
-		max-width: 400px;
-		margin: 1rem auto;
-		display: block;
-		border-radius: 1rem;
-		-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
-		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-	}
-
-	.person__name {
-		position: relative;
-		width: fit-content;
-		left: 50%;
-		transform: translateX(-50%);
-		top: -125px;
-		background: transparent;
-		font-size: 2rem;
-		margin-bottom: 1.5rem;
-	}
-}
-
-.person__info {
-	padding: 1rem 2rem;
-	border-radius: 1rem;
-	box-shadow: 0 0 1px 1px $img__border__shadow;
-	position: relative;
-	width: fit-content;
-	left: 50%;
-	transform: translateX(-50%);
-	background: transparent;
-	top: -125px;
-	text-align: center;
-
-	&:hover {
-		box-shadow: 0 0 3px 3px $highlight__clr;
-	}
-
-	p {
-		background: transparent;
-		margin-bottom: 0.25rem;
-
-		span {
-			display: block;
-		}
-	}
-}
-
-.person__biography {
-	padding: 0 1rem;
-	text-align: justify;
-	line-height: 1.5rem;
-	position: relative;
-	top: -75px;
-}
-
-.person__starring {
-	padding-left: 1rem;
-}
 
 @media only screen and (min-width: 640px) {
 	.data__wrap {
@@ -281,35 +136,8 @@
 		top: 245px;
 		left: 95px;
 	}
-	.single__movie__header {
-		height: 250px;
-	}
-	.single__movie__cover {
-		left: 20%;
-		max-width: 165px;
-	}
-	.single__movie__data {
-		div {
-			p {
 
-				.director__span {
-					&:first-child {
-						display: inline;
-					}
 
-					&:nth-child(2), &:nth-child(3), &:nth-child(4) {
-
-						display: block;
-						margin-left: 4.5rem;
-					}
-				}
-			}
-		}
-	}
-	.single__movie__info {
-		max-width: 600px;
-		margin: 0 auto;
-	}
 	.single__movie__cast, .single__movie__similar, .person__cast, .movie__history, .person__history {
 		gap: 2rem;
 
@@ -321,9 +149,7 @@
 			width: 125px;
 		}
 	}
-	.person__wrap {
-		margin: 110px auto 3rem auto;
-	}
+
 
 	.genre__wrap {
 		gap: 1.5rem;
@@ -354,21 +180,7 @@
 		top: 315px;
 		left: 130px;
 	}
-	.single__movie__wrap {
-		max-width: 1230px;
-		margin: 0 auto;
-	}
-	.single__movie__header {
-		height: 300px;
-	}
-	.single__movie__cover {
-		max-width: 200px;
-		top: -75px;
-	}
-	.single__movie__info {
-		max-width: 600px;
-		margin: 0 auto;
-	}
+
 	.genre__wrap {
 		gap: 2rem;
 

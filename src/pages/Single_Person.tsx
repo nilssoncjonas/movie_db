@@ -25,8 +25,8 @@ const Single_Person = () => {
 					<h2 className={'person__name'}>{data.name}</h2>
 					<div className={'person__info'}>
 						<p>{data.gender === 1 ? 'Actress' : 'Actor'}</p>
-						<p>Birthday: {data.birthday}
-							(age {new Date().getFullYear() - new Date(data.birthday).getFullYear()})</p>
+						<p>Birthday: {data.birthday} {!data.deathday ? `(age ${new Date().getFullYear() - new Date(data.birthday).getFullYear()})` : null }</p>
+						{data.deathday ? <p>Deathday: {data.deathday} {data.deathday ? `(age ${new Date(data.deathday).getFullYear() - new Date(data.birthday).getFullYear()})` : null }</p> : null }
 						<p>Place of birth: <span> {data.place_of_birth}</span></p>
 						<p>Known for {data.movie_credits.cast.length} movies</p>
 					</div>

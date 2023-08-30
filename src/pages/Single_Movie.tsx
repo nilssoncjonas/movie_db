@@ -8,6 +8,7 @@ import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_MovieScroll from "../components/C_MovieScroll.tsx";
 import C_PersonScroll from "../components/C_PersonScroll.tsx";
 import C_MoviePage_Placeholder from "../components/C_MoviePage_Placeholder.tsx";
+import {useEffect} from "react";
 
 const Single_Movie = () => {
 	const { id } = useParams()
@@ -20,11 +21,13 @@ const Single_Movie = () => {
 		isError,
 	} = useGetMovie(movieId)
 
-	if (isSuccess && data) {
+useEffect(() => {
+	if (movieId && data) {
 		const movieHistory = window.localStorage.getItem('movieHistory') ?? '[]'
 		const movieList = JSON.parse(movieHistory)
+		console.log('Från localstorage',movieList)
 
-		if (!movieList.some((obj: MovieHistory) => obj.id === movieId)) {
+		if (!movieList.some((obj: MovieHistory) => obj.title === data.title)) {
 			window.localStorage.setItem('movieHistory', JSON.stringify([{
 				id: movieId,
 				title: data.title,
@@ -32,7 +35,9 @@ const Single_Movie = () => {
 			}, ...movieList]))
 		}
 	}
-
+}, [data, movieId])
+	
+	
 	return (
 		<div className={'body'}>
 			{isLoading && <C_MoviePage_Placeholder />}

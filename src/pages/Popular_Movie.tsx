@@ -35,7 +35,12 @@ const Popular_Movie = () => {
 				<h2>Trending Movies {timeParams === 'day' ? 'Today!' : 'This Week!'}</h2>
 			</div>
 			{isLoading && <C_Placeholder_loading />}
-			{isSuccess && data ? (
+			
+			{Number(pageParams) > 500 ? (
+				<C_ErrorHandle variant={'warning'} msg={'Invalid page: Pages start at 1 and max at 500.'} />
+			): null }
+			
+			{isSuccess && data.results.length > 1 ? (
 				<>
 
 					<div className={'d-flex justify-content-around align-items-center pagination__wrap'}>
@@ -54,7 +59,7 @@ const Popular_Movie = () => {
 							page={data.page}
 							total_pages={data.total_pages}
 							hasPrevPage={data.page > 1}
-							hasNextPage={data.page + 1 < data.total_pages}
+							hasNextPage={data.page + 1 > data.total_pages || data.page === 500}
 							prevPage={prevPage}
 							nextPage={nextPage}
 						/>
@@ -65,7 +70,7 @@ const Popular_Movie = () => {
 						page={data.page}
 						total_pages={data.total_pages}
 						hasPrevPage={data.page > 1}
-						hasNextPage={data.page + 1 < data.total_pages}
+						hasNextPage={data.page + 1 > data.total_pages || data.page === 500}
 						prevPage={prevPage}
 						nextPage={nextPage}
 					/>

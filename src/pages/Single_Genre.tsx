@@ -38,8 +38,16 @@ const Single_Genre = () => {
 			</div>
 
 			{isLoading && <C_Placeholder_loading />}
-
-			{isSuccess && data ? (
+			
+			{Number(pageParams) > 500 ? (
+				<C_ErrorHandle variant={'warning'} msg={'Invalid page: Pages start at 1 and max at 500.'} />
+			): null }
+			
+			{isSuccess && data.page > data.total_pages ? (
+				<C_ErrorHandle variant={'warning'} msg={`Invalid page: Pages start at 1 and max at 500.`} />
+			): null }
+			
+			{isSuccess && data.results.length > 1  ? (
 				<>
 					<div className={'text-center'}>
 						<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
@@ -47,7 +55,7 @@ const Single_Genre = () => {
 							page={data.page}
 							total_pages={data.total_pages}
 							hasPrevPage={data.page > 1}
-							hasNextPage={data.page + 1 < data.total_pages}
+							hasNextPage={data.page + 1 > data.total_pages || data.page === 500}
 							prevPage={prevPage}
 							nextPage={nextPage}
 						/>
@@ -59,7 +67,7 @@ const Single_Genre = () => {
 						page={data.page}
 						total_pages={data.total_pages}
 						hasPrevPage={data.page > 1}
-						hasNextPage={data.page + 1 < data.total_pages}
+						hasNextPage={data.page + 1 > data.total_pages || data.page === 500}
 						prevPage={prevPage}
 						nextPage={nextPage}
 					/>
@@ -69,7 +77,7 @@ const Single_Genre = () => {
 
 			{isError ? (
 				<C_ErrorHandle variant={'danger'}
-					msg={'Something went wrong when search for movies in this genre.'} />
+					msg={'Something went wrong when searching for movies in this genre.'} />
 			) : null}
 
 		</div>

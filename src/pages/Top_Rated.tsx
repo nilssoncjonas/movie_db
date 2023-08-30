@@ -33,8 +33,12 @@ const Top_Rated = () => {
 			</div>
 
 			{isLoading && <C_Placeholder_loading />}
-
-			{isSuccess && data ? (
+			
+			{isSuccess && data.page > data.total_pages ? (
+				<C_ErrorHandle variant={'warning'} msg={`Seems like you tyring to reach a page that dosen't exist! Choose a page between 1 and ${data.total_pages}! `} />
+			): null }
+			
+			{isSuccess && data.results.length > 1 ? (
 				<>
 					<div className={'text-center'}>
 						<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
@@ -42,18 +46,19 @@ const Top_Rated = () => {
 							page={data.page}
 							total_pages={data.total_pages}
 							hasPrevPage={data.page > 1}
-							hasNextPage={data.page < data.total_pages}
+							hasNextPage={data.page + 1 > data.total_pages}
 							prevPage={prevPage}
 							nextPage={nextPage}
 						/>
 					</div>
+					
 					<C_MovieList res={data.results} />
 
 					<C_Pagination
 						page={data.page}
 						total_pages={data.total_pages}
 						hasPrevPage={data.page > 1}
-						hasNextPage={data.page < data.total_pages}
+						hasNextPage={data.page + 1 > data.total_pages}
 						prevPage={prevPage}
 						nextPage={nextPage}
 					/>

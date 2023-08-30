@@ -44,8 +44,21 @@ const Search_Result = () => {
 			<C_SearchForm onSearch={onSearch} />
 
 			{isLoading && <C_Placeholder_loading />}
-
-			{isSuccess && data && data.results.length > 1 ? (
+			
+			{data && data.total_results === 0 ? (
+			<div className={'search__noresult'}>
+				Couldn't find any movies that matches: <span> "{queryParam}"</span>
+				<p>
+					Try search again for a movie title!
+				</p>
+			</div>
+			):null}
+			
+			{isSuccess && data.page > data.total_pages ? (
+				<C_ErrorHandle variant={'warning'} msg={`Seems like you tyring to reach a page that dosen't exist! Choose a page between 1 and ${data.total_pages}! `} />
+			): null }
+			
+			{isSuccess && data.results.length > 1  ? (
 				<>
 					<div className={'text-center'}>
 						<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
@@ -53,7 +66,7 @@ const Search_Result = () => {
 							page={data.page}
 							total_pages={data.total_pages}
 							hasPrevPage={data.page > 1}
-							hasNextPage={data.page + 1 < data.total_pages}
+							hasNextPage={data.page + 1 > data.total_pages}
 							prevPage={prevPage}
 							nextPage={nextPage}
 						/>
@@ -65,20 +78,13 @@ const Search_Result = () => {
 						page={data.page}
 						total_pages={data.total_pages}
 						hasPrevPage={data.page > 1}
-						hasNextPage={data.page + 1 < data.total_pages}
+						hasNextPage={data.page + 1 > data.total_pages}
 						prevPage={prevPage}
 						nextPage={nextPage}
 					/>
 				</>
-			) : (
-				<div className={'search__noresult'}>
-					Couldn't find any movies that matches: <span> "{queryParam}"</span>
-					<p>
-						Try search again for a movie title!
-					</p>
-				</div>
-
-			)}
+			): null }
+			
 			{isError ? (
 				<C_ErrorHandle variant={'danger'} msg={'Something went wrong when searching.'} />
 			) : null}

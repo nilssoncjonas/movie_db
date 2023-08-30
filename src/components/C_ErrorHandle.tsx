@@ -16,7 +16,7 @@ const C_ErrorHandle: React.FC<Props> = ({ variant, msg }) => {
 			<Alert key={variant} variant={variant}>
 				<h2>Whops!</h2>
 				{msg}
-				<Button variant={`outline-${variant}`} className={'mt-2'} onClick={() => navigate('/')}>Go back to the startpage!</Button>
+				<Button variant={`outline-${variant}`} className={'mt-2 d-block'} onClick={() => navigate('/')}>Go back to the startpage!</Button>
 			</Alert>
 		</div>
 	)

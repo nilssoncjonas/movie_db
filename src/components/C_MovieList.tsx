@@ -14,6 +14,7 @@ const C_MovieList: React.FC<Props> = ({ res }) => {
 				{res.map(m => (
 					<Link to={`/movie/${m.id}`} key={m.id}>
 						<div className={'data__card'}>
+							<span className={'vote__average__badge'}> {Math.floor(m.vote_average * 10)}%</span>
 							<img alt={m.title} src={m.poster_path === null ? `https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat` : `https://image.tmdb.org/t/p/w200${m.poster_path}`} />
 							<p>{m.title} <span>{m.release_date}</span></p>
 						</div>

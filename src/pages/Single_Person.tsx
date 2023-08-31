@@ -1,11 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 // hooks
 import useGetPerson from "../hooks/useGetPerson.ts";
+import useLocalStorage from "../hooks/useLocalStorage.ts";
+// Types
+import {PersonHistory} from "../types/index.types.ts";
 // components
 import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_Person_Placeholder from "../components/C_Person_Placeholder.tsx";
-import {useEffect} from "react";
-import {SinglePerson} from "../types/index.types.ts";
 
 const Single_Person = () => {
 	const { id } = useParams()
@@ -17,20 +18,17 @@ const Single_Person = () => {
 		isError,
 	} = useGetPerson(personId)
 	
-	useEffect(() => {
-		if (personId && data) {
-			const personHistory = window.localStorage.getItem('personHistory') ?? '[]'
-			const personList = JSON.parse(personHistory)
-			
-			if (!personList.some((obj: SinglePerson) => obj.name === data.name)) {
-				window.localStorage.setItem('personHistory', JSON.stringify([{
-					id: personId,
-					name: data.name,
-					profile_path: data.profile_path
-				}, ...personList.slice(0,9)]))
-			}
+	const [personList, setPersonList] = useLocalStorage<PersonHistory[]>('personHistory', [])
+	
+	if (personId && data) {
+		if (!personList.some((obj: PersonHistory) => obj.name === data.name)) {
+			setPersonList([{
+				id: personId,
+				name: data.name,
+				profile_path: !data.profile_path ? '' : data.profile_path
+			}, ...personList.slice(0,9)])
 		}
-	}, [data, personId])
+	}
 	
 	return (
 		<div className={'body'}>
@@ -55,7 +53,7 @@ const Single_Person = () => {
 					<div className={'person__cast'}>
 						{data.movie_credits.cast.map(c => (
 							<Link to={`/movie/${c.id}`} key={c.id}>
-								<img src={c.poster_path === null ? 'https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat' : `https://image.tmdb.org/t/p/w200${c.poster_path}`} alt={c.title} />
+								<img src={c.poster_path === null ? 'https://placehold.co/200x30 0/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat' : `https://image.tmdb.org/t/p/w200${c.poster_path}`} alt={c.title} />
 								<p>{c.title} as {c.character}</p>
 							</Link>
 						))}

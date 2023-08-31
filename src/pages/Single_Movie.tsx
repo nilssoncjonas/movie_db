@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 // hooks
 import useGetMovie from "../hooks/useGetMovie.ts";
+import useLocalStorage from "../hooks/useLocalStorage.ts";
 // Types
 import { MovieHistory } from "../types/index.types.ts";
 // components
@@ -8,7 +9,6 @@ import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_MovieScroll from "../components/C_MovieScroll.tsx";
 import C_PersonScroll from "../components/C_PersonScroll.tsx";
 import C_MoviePage_Placeholder from "../components/C_MoviePage_Placeholder.tsx";
-import {useEffect} from "react";
 
 const Single_Movie = () => {
 	const { id } = useParams()
@@ -21,20 +21,17 @@ const Single_Movie = () => {
 		isError,
 	} = useGetMovie(movieId)
 
-useEffect(() => {
+	const  [movieList, setMovieList] = useLocalStorage<MovieHistory[]>('movieHistory')
+	
 	if (movieId && data) {
-		const movieHistory = window.localStorage.getItem('movieHistory') ?? '[]'
-		const movieList = JSON.parse(movieHistory)
-
 		if (!movieList.some((obj: MovieHistory) => obj.title === data.title)) {
-			window.localStorage.setItem('movieHistory', JSON.stringify([{
+			setMovieList([{
 				id: movieId,
 				title: data.title,
-				poster_path: data.poster_path
-			}, ...movieList.slice(0,9)]))
+				poster_path: !data.poster_path ? '' : data.poster_path
+			}, ...movieList.slice(0,9)])
 		}
 	}
-}, [data, movieId])
 	return (
 		<div className={'body'}>
 			{isLoading && <C_MoviePage_Placeholder />}

@@ -9,6 +9,7 @@ import C_ErrorHandle from "../components/C_ErrorHandle.tsx";
 import C_MovieScroll from "../components/C_MovieScroll.tsx";
 import C_PersonScroll from "../components/C_PersonScroll.tsx";
 import C_MoviePage_Placeholder from "../components/C_MoviePage_Placeholder.tsx";
+import C_Collection from "../components/C_Collection.tsx";
 
 const Single_Movie = () => {
 	const { id } = useParams()
@@ -20,7 +21,7 @@ const Single_Movie = () => {
 		isSuccess,
 		isError,
 	} = useGetMovie(movieId)
-
+	
 	const  [movieList, setMovieList] = useLocalStorage<MovieHistory[]>('movieHistory')
 	
 	if (movieId && data) {
@@ -71,6 +72,10 @@ const Single_Movie = () => {
 							<p className={'single__movie__overview'}>{data.overview}</p>
 						</div>
 						
+						{isSuccess && data.belongs_to_collection ?  (
+							<C_Collection collectionId={data.belongs_to_collection.id} />
+						) : null }
+						
 						{isSuccess && data.credits && data.similar ? (
 
 							<div>
@@ -83,7 +88,7 @@ const Single_Movie = () => {
 									<C_MovieScroll data={data.similar} />
 								</div>
 								<h3>Recommendations based of {data.title}</h3>
-								<div className={'single__movie__similar'}>
+								<div className={'single__movie__recommendations'}>
 									<C_MovieScroll data={data.recommendations} />
 								</div>
 							</div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 // types
-import { MovieResult } from "../types/movie.types.ts";
+import {MovieResult} from "../types/movie.types.ts";
 
 interface Props {
 	res: MovieResult[]

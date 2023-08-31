@@ -1,0 +1,40 @@
+.collection__cover {
+	position: relative;
+	border-radius: 1rem;
+	box-shadow: 0 0 1px 2px $img__border__shadow;
+	left: 50%;
+	transform: translateX(-50%);
+	top: -20%;
+	width: 200px;
+}
+
+.collection__info {
+	margin-top: 2rem;
+
+	h2 {
+		margin: 0.5rem auto;
+		width: fit-content;
+
+	}
+	p {
+		padding: 0.75rem;
+		margin: 0 auto;
+		max-width: 600px;
+	}
+}
+
+
+@media only screen and (min-width: 640px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+	.collection__header {
+		height: 500px;
+	}
+
+	.collection__cover {
+		top: -30%;
+		width: 300px;
+	}
+}

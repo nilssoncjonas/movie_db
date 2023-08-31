@@ -17,6 +17,7 @@ const Home = () => {
 	
 	const  [movieList] = useLocalStorage<MovieHistory[]>('movieHistory')
 	const  [personList] = useLocalStorage<PersonHistory[]>('personHistory')
+	const  [collectionList] = useLocalStorage<MovieHistory[]>('collectionHistory')
 	
 	return (
 		<div className={'body'}>
@@ -53,6 +54,23 @@ const Home = () => {
 								<Link to={`/person/${c.id}`} key={c.id}>
 									<img key={c.id} src={c.profile_path === null ? `https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat` : `https://image.tmdb.org/t/p/w200${c.profile_path}`} alt={c.name} />
 									<p>{c.name}</p>
+								</Link>
+							))}
+						</div>
+					</div>
+				</>
+			)}
+			
+			{collectionList.length >= 1 && (
+				<>
+					<h2 className={'movie__history__title'}>Collections from your viewing history</h2>
+					<div className={'data__wrap'}>
+						<div className={'movie__history'}>
+							
+							{collectionList.map(c => (
+								<Link to={`/collection/${c.id}`} key={c.id}>
+									<img src={c.poster_path === null ? `https://placehold.co/200x300/212529/e5a00d?text=!\\nimage\\nmissing&font=montserrat` : `https://image.tmdb.org/t/p/w200${c.poster_path}`} alt={c.title} />
+									<p>{c.title}</p>
 								</Link>
 							))}
 						</div>

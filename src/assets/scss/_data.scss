@@ -91,18 +91,19 @@
 	}
 }
 
-.single__movie__cast, .single__movie__similar, .person__cast, .movie__history, .person__history {
+.single__movie__cast, .single__movie__similar, .person__cast, .movie__history, .person__history, .single__movie__collection, .single__movie__recommendations {
 	max-width: 100vw;
 	overflow-x: scroll;
 	display: flex;
 	gap: 1rem;
 	padding: 1rem;
-	margin-bottom: 3rem;
+	margin-bottom: 1rem;
 
 	img {
 		border-radius: 1rem;
 		width: 100px;
 		box-shadow: 0 0 1px 1px $img__border__shadow;
+		display: inline;
 	}
 
 	a {
@@ -138,7 +139,7 @@
 	}
 
 
-	.single__movie__cast, .single__movie__similar, .person__cast, .movie__history, .person__history {
+	.single__movie__cast, .single__movie__similar, .person__cast, .movie__history, .person__history, .single__movie__collection, .single__movie__recommendations  {
 		gap: 2rem;
 
 		img {

@@ -77,3 +77,12 @@ export type SpokenLanguage = {
 	iso_639_1: string
 	name: string
 }
+
+export type MovieCollection = {
+	id: number,
+	name: string,
+	overview: string,
+	poster_path: string,
+	backdrop_path: null,
+	parts: MovieDetails[]
+}

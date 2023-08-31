@@ -1,4 +1,4 @@
-import { Dates, MovieResult } from "./movie.types"
+import {Dates, MovieResult} from "./movie.types"
 
 export * from './movie.types'
 export * from './person.types'
@@ -32,4 +32,11 @@ export type PersonHistory = {
 	id: number,
 	name: string,
 	profile_path: string
+}
+
+export type CollectionHistory = {
+	id: number,
+	name: string,
+	poster_path: string,
+
 }

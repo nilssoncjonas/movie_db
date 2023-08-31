@@ -8,6 +8,8 @@ import Top_Rated from "./pages/Top_Rated.tsx";
 import Popular_Movie from "./pages/Popular_Movie.tsx";
 import Single_Movie from "./pages/Single_Movie.tsx";
 
+import Collection from "./pages/Collection.tsx";
+
 import Single_Person from "./pages/Single_Person.tsx";
 
 import Genre_Index from "./pages/Genre_Index.tsx";
@@ -34,6 +36,9 @@ function App() {
 					<Route path={'top_rated'} element={<Top_Rated />} />
 					<Route path={'popular'} element={<Popular_Movie />} />
 				</Route>
+				
+				<Route path={'/collection/:id'} element={<Collection />} />
+		
 
 				<Route path={'/person'}>
 					<Route path={':id'} element={<Single_Person />} />

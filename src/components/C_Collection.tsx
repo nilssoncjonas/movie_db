@@ -12,7 +12,7 @@ const C_Collection: React.FC<Props> = ({collectionId}) => {
 		data,
 		isSuccess,
 		isLoading,
-	} = useGetCollection(String(collectionId))
+	} = useGetCollection(collectionId)
 
 	return (
 		<>

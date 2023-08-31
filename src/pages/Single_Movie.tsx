@@ -75,23 +75,32 @@ const Single_Movie = () => {
 						{isSuccess && data.belongs_to_collection ?  (
 							<C_Collection collectionId={data.belongs_to_collection.id} />
 						) : null }
-						
-						{isSuccess && data.credits && data.similar ? (
 
+						{isSuccess && data.credits.cast.length > 1 ? (
 							<div>
 								<h3>Cast in {data.title}</h3>
 								<div className={'single__movie__cast'}>
 									<C_PersonScroll data={data.credits} />
 								</div>
-								<h3>Similar (-ish!) movies as {data.title}</h3>
-								<div className={'single__movie__similar'}>
-									<C_MovieScroll data={data.similar} />
-								</div>
-								<h3>Recommendations based of {data.title}</h3>
-								<div className={'single__movie__recommendations'}>
-									<C_MovieScroll data={data.recommendations} />
-								</div>
 							</div>
+						) : null }
+						
+						{isSuccess && data.similar.results.length > 1 ? (
+						<div>
+							<h3>Similar (-ish!) movies as {data.title}</h3>
+							<div className={'single__movie__similar'}>
+								<C_MovieScroll data={data.similar} />
+							</div>
+						</div>
+						) : null }
+						
+						{isSuccess && data.recommendations.results.length > 1 ? (
+						<div>
+							<h3>Recommendations based of {data.title}</h3>
+							<div className={'single__movie__recommendations'}>
+								<C_MovieScroll data={data.recommendations} />
+							</div>
+						</div>
 						) : null }
 					</div>
 				</>

@@ -12,7 +12,7 @@ const Collection = () => {
 	const {id} = useParams()
 	const collectionId = Number(id)
 	
-const {data, isSuccess, isError, isLoading} = useGetCollection(String(collectionId))
+const {data, isSuccess, isError, isLoading} = useGetCollection(collectionId)
 
 	const [collectionList, setCollectionList] = useLocalStorage<CollectionHistory[]>('collectionHistory')
 	

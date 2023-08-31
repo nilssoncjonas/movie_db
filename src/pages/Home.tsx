@@ -14,11 +14,6 @@ const Home = () => {
 		queryClient.invalidateQueries(['search'])
 		navigate(`/search?query=${searchQuery}`)
 	}
-
-	// const movieHistory = window.localStorage.getItem('movieHistory') ?? '[]'
-	// const movieList: MovieHistory[] = JSON.parse(movieHistory)
-	// const personHistory = window.localStorage.getItem('personHistory')  ?? '[]'
-	// const personList: PersonHistory[] = JSON.parse(personHistory)
 	
 	const  [movieList] = useLocalStorage<MovieHistory[]>('movieHistory')
 	const  [personList] = useLocalStorage<PersonHistory[]>('personHistory')

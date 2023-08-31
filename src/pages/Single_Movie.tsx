@@ -70,7 +70,7 @@ const Single_Movie = () => {
 							<h2 className={'single__movie__title'}>{data.title} <span>{data.tagline}</span></h2>
 							<p className={'single__movie__overview'}>{data.overview}</p>
 						</div>
-
+						
 						{isSuccess && data.credits && data.similar ? (
 
 							<div>
@@ -78,12 +78,16 @@ const Single_Movie = () => {
 								<div className={'single__movie__cast'}>
 									<C_PersonScroll data={data.credits} />
 								</div>
-								<h3> Similar (-ish!) movies as {data.title}</h3>
+								<h3>Similar (-ish!) movies as {data.title}</h3>
 								<div className={'single__movie__similar'}>
 									<C_MovieScroll data={data.similar} />
 								</div>
+								<h3>Recommendations based of {data.title}</h3>
+								<div className={'single__movie__similar'}>
+									<C_MovieScroll data={data.recommendations} />
+								</div>
 							</div>
-						) : null}
+						) : null }
 					</div>
 				</>
 			) : null}

@@ -61,7 +61,7 @@ const Search_Result = () => {
 			{isSuccess && data.results.length > 1  ? (
 				<>
 					<div className={'text-center'}>
-						<p>{new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
+						<p className={'my-2'}>Listing {new Intl.NumberFormat('se-SV').format(data.total_results)} Result</p>
 						<C_Pagination
 							page={data.page}
 							total_pages={data.total_pages}

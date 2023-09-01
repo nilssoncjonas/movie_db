@@ -2,7 +2,7 @@
 
 <br>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/32a9da6f-0c0e-4c67-84de-d2497aad4700/deploy-status)](https://app.netlify.com/sites/tmdb-ncj/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/32a9da6f-0c0e-4c67-84de-d2497aad4700/deploy-status?branch=main)](https://app.netlify.com/sites/tmdb-ncj/deploys)
 
 
 # Javascript Fördjupning - Inlämningsuppgift 2 - The Movie DB
